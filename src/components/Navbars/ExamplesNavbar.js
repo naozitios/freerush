@@ -24,7 +24,6 @@ import classnames from "classnames";
 // reactstrap components
 import {
   Collapse,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
@@ -71,15 +70,9 @@ function ExamplesNavbar() {
     >
       <Container>
         <div className="navbar-translate">
-          <NavbarBrand
-            data-placement="bottom"
-            to="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
-            tag={Link}
-          >
-            Paper Kit 2
-          </NavbarBrand>
+              <NavLink to="/index" tag={Link}>
+               Freerush
+              </NavLink>
           <button
             aria-expanded={navbarCollapse}
             className={classnames("navbar-toggler navbar-toggler", {
@@ -101,14 +94,6 @@ function ExamplesNavbar() {
             <NavItem>
               <NavLink to="/index" tag={Link}>
                 <i className="nc-icon nc-layout-11" /> Components
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-examples-navbar"
-                target="_blank"
-              >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
               </NavLink>
             </NavItem>
             <NavItem>
@@ -162,7 +147,7 @@ function ExamplesNavbar() {
                 href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-examples-navbar"
                 target="_blank"
               >
-                <i className="nc-icon nc-spaceship"></i> Upgrade to Pro
+                <i className="nc-icon nc-spaceship"></i> Register with us!
               </Button>
             </NavItem>
           </Nav>

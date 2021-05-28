@@ -21,6 +21,8 @@ import React from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import { Link } from "react-router-dom";
+//mport { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // core components
 
@@ -53,7 +55,7 @@ function IndexHeader() {
               </div>
             </div>
             <h2 className="presentation-subtitle text-center">
-              Kickstart you freelance journey with us today!
+              Kickstart your freelance journey with us today!
             </h2>
           </Container>
         </div>

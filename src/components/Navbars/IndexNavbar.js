@@ -19,6 +19,8 @@
 import React from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
+import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
   Button,
@@ -71,7 +73,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Paper Kit React
+            Freerush
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -136,21 +138,26 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
+            <Button
+                className="btn-round"
+                color="outline-warning"
+                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-index-navbar"
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
-              </NavLink>
+                <i className="nc-icon nc-book-bookmark"></i> Join us!
+              </Button>
             </NavItem>
             <NavItem>
               <Button
                 className="btn-round"
-                color="danger"
-                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-index-navbar"
+                color="outline-danger"
                 target="_blank"
               >
-                <i className="nc-icon nc-spaceship"></i> Upgrade to Pro
+                <li>
+                <Link to="/register-page">
+                <i className="nc-icon nc-spaceship"></i> Sign in
+                </Link>
+                </li>
               </Button>
             </NavItem>
           </Nav>
