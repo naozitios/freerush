@@ -42,9 +42,16 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/login-image.jpg").default + ")",
+            "url(" + require("assets/img/noah_login.JPG").default + ")",
         }}
       >
+        <div
+          className="moving-clouds"
+          style={{
+            backgroundImage:
+              "url(" + require("assets/img/clouds.png").default + ")",
+          }}
+        />
         <div className="filter" />
         <Container>
           <Row>
