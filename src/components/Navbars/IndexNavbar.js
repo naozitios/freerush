@@ -31,7 +31,19 @@ import {
   NavLink,
   Nav,
   Container,
+  Input,
+  InputGroup,
 } from "reactstrap";
+
+const Forms = () => {
+  return (
+    <>
+      <InputGroup size="sm">
+          <Input type="text" placeholder="Search" bsSize="sm" />
+      </InputGroup>
+    </>
+  );
+};
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -93,6 +105,10 @@ function IndexNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
+            <NavItem> 
+              <Forms>    
+              </Forms>
+            </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
@@ -129,22 +145,27 @@ function IndexNavbar() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
                 target="_blank"
                 title="Star on GitHub"
-              >
+              ><li>
+                <Link to="/landing-page">
                 <i className="fa fa-github" />
                 <p className="d-lg-none">GitHub</p>
+                </Link>
+              </li>
               </NavLink>
             </NavItem>
             <NavItem>
             <Button
                 className="btn-round"
                 color="outline-warning"
-                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-index-navbar"
                 target="_blank"
               >
+              <li>
+                <Link to="/register-page">
                 <i className="nc-icon nc-book-bookmark"></i> Join us!
+                </Link>
+                </li>
               </Button>
             </NavItem>
             <NavItem>
