@@ -104,9 +104,9 @@ function IndexNavbar() {
           navbar
           isOpen={navbarCollapse}
         >
-          <Nav navbar>
-            <NavItem> 
-              <Forms>    
+          <Nav navbar className="container-fluid">
+            <NavItem className="ml-auto"> 
+              <Forms >    
               </Forms>
             </NavItem>
             <NavItem>
