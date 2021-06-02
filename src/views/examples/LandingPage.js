@@ -200,8 +200,7 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://www.linkedin.com/in/edward-loke-961575118/"
                     >
                       <i className="fa fa-linkedin" />
                     </Button>
@@ -253,8 +252,7 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="www.linkedin.com/in/noah-teo"
                     >
                       <i className="fa fa-linkedin" />
                     </Button>
