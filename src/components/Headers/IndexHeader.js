@@ -21,6 +21,8 @@ import React from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import { Link } from "react-router-dom";
+//mport { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // core components
 
@@ -31,7 +33,7 @@ function IndexHeader() {
         className="page-header section-dark"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/antoine-barres.jpg").default + ")",
+            "url(" + require("assets/img/usa-home.JPG").default + ")",
         }}
       >
         <div className="filter" /> 
@@ -53,7 +55,7 @@ function IndexHeader() {
               </div>
             </div>
             <h2 className="presentation-subtitle text-center">
-              Kickstart you freelance journey with us today!
+              Kickstart your freelance journey with us today!
             </h2>
           </Container>
         </div>

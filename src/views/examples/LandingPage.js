@@ -1,5 +1,9 @@
 /*!
 
+this is the page
+
+https://demos.creative-tim.com/paper-kit-react/#/landing-page?ref=pkr-github-readme
+
 =========================================================
 * Paper Kit React - v1.3.0
 =========================================================
@@ -36,9 +40,9 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import IndexNavbar from "components/Navbars/IndexNavbar";
+import IndexHeader from "components/Headers/IndexHeader";
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -50,8 +54,8 @@ function LandingPage() {
   });
   return (
     <>
-      <ExamplesNavbar />
-      <LandingPageHeader />
+      <IndexHeader />
+      <IndexNavbar />
       <div className="main">
         <div className="section text-center">
           <Container>
@@ -59,11 +63,10 @@ function LandingPage() {
               <Col className="ml-auto mr-auto" md="8">
                 <h2 className="title">Let's talk product</h2>
                 <h5 className="description">
-                  This is the paragraph where you can write more details about
-                  your product. Keep you user engaged by providing meaningful
-                  information. Remember that by this time, the user is curious,
-                  otherwise he wouldn't scroll to get here. Add a button if you
-                  want the user to see more.
+                  You know those things you do in life that just do not bring meaning to it? That is us everyday.
+                  We want to break that trend. Smash it against the wall. Let the world know that you are not defined 
+                  by your day to day job. Find a side hustle. Make a passion. Fund it. You can earn from it too. Thats why
+                  Freerush.
                 </h5>
                 <br />
                 <Button
@@ -87,8 +90,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Beautiful Gallery</h4>
                     <p className="description">
-                      Spend your time generating new ideas. You don't have to
-                      think of implementing.
+                      Check out our freelancers
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -104,8 +106,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">New Ideas</h4>
                     <p>
-                      Larger, yet dramatically thinner. More powerful, but
-                      remarkably power efficient.
+                      If you are looking for inspiration on what to make just check this out.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -121,8 +122,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Statistics</h4>
                     <p>
-                      Choose from a veriety of many colors resembling sugar
-                      paper pastels.
+                      Based on statistics, 100% of every user feels inspired by our superior web design.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -136,10 +136,10 @@ function LandingPage() {
                     <i className="nc-icon nc-sun-fog-29" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Delightful design</h4>
+                    <h4 className="info-title">Delightful partners</h4>
                     <p>
-                      Find unique and handmade delightful designs related items
-                      directly from our sellers.
+                      Find you a great girlfriend or boyfriend who isn't crazy.
+                      It will help you in the long run. Trust us!
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -154,59 +154,7 @@ function LandingPage() {
           <Container>
             <h2 className="title">Let's talk about us</h2>
             <Row>
-              <Col md="4">
-                <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={
-                          require("assets/img/faces/clem-onojeghuo-3.jpg")
-                            .default
-                        }
-                      />
-                    </a>
-                  </div>
-                  <CardBody>
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <div className="author">
-                        <CardTitle tag="h4">Henry Ford</CardTitle>
-                        <h6 className="card-category">Product Manager</h6>
-                      </div>
-                    </a>
-                    <p className="card-description text-center">
-                      Teamwork is so important that it is virtually impossible
-                      for you to reach the heights of your capabilities or make
-                      the money that you want without becoming very good at it.
-                    </p>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
-                  </CardFooter>
-                </Card>
+              <Col md="2">
               </Col>
               <Col md="4">
                 <Card className="card-profile card-plain">
@@ -215,61 +163,7 @@ function LandingPage() {
                       <img
                         alt="..."
                         src={
-                          require("assets/img/faces/joe-gardner-2.jpg").default
-                        }
-                      />
-                    </a>
-                  </div>
-                  <CardBody>
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <div className="author">
-                        <CardTitle tag="h4">Sophie West</CardTitle>
-                        <h6 className="card-category">Designer</h6>
-                      </div>
-                    </a>
-                    <p className="card-description text-center">
-                      A group becomes a team when each member is sure enough of
-                      himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes an
-                      orchestra to play it.
-                    </p>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Col>
-              <Col md="4">
-                <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={
-                          require("assets/img/faces/erik-lucatero-2.jpg")
+                          require("assets/img/faces/edward.jpg")
                             .default
                         }
                       />
@@ -278,15 +172,12 @@ function LandingPage() {
                   <CardBody>
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Robert Orben</CardTitle>
+                        <CardTitle tag="h4">Edward Loke</CardTitle>
                         <h6 className="card-category">Developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
+                      If you saw me from across the street would you still ask me for a good time
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
@@ -301,16 +192,67 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://www.instagram.com/awkward_look/"
+                      target="_blank"
                     >
-                      <i className="fa fa-google-plus" />
+                      <i className="fa fa-instagram" />
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
+                      href="https://www.linkedin.com/in/edward-loke-961575118/"
+                    >
+                      <i className="fa fa-linkedin" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Col>
+              <Col md="4">
+                <Card className="card-profile card-plain">
+                  <div className="card-avatar">
+                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      <img
+                        alt="..."
+                        src={
+                          require("assets/img/faces/noah.JPG")
+                            .default
+                        }
+                      />
+                    </a>
+                  </div>
+                  <CardBody>
+                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      <div className="author">
+                        <CardTitle tag="h4">Noah Teo</CardTitle>
+                        <h6 className="card-category">Developer</h6>
+                      </div>
+                    </a>
+                    <p className="card-description text-center">
+                      There are a lot of things i have tried in this life, but 
+                      I have never explored the back side of a man
+                    </p>
+                  </CardBody>
+                  <CardFooter className="text-center">
+                    <Button
+                      className="btn-just-icon btn-neutral"
+                      color="link"
                       href="#pablo"
                       onClick={(e) => e.preventDefault()}
+                    >
+                      <i className="fa fa-twitter" />
+                    </Button>
+                    <Button
+                      className="btn-just-icon btn-neutral ml-1"
+                      color="link"
+                      href="https://www.instagram.com/naozitio/"
+                      target="_blank"
+                    >
+                      <i className="fa fa-instagram" />
+                    </Button>
+                    <Button
+                      className="btn-just-icon btn-neutral ml-1"
+                      color="link"
+                      href="www.linkedin.com/in/noah-teo"
                     >
                       <i className="fa fa-linkedin" />
                     </Button>

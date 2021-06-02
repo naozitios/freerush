@@ -1,4 +1,7 @@
 /*!
+this is the page
+
+https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-readme
 
 =========================================================
 * Paper Kit React - v1.3.0
@@ -39,9 +42,16 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/login-image.jpg").default + ")",
+            "url(" + require("assets/img/noah_login.JPG").default + ")",
         }}
       >
+        <div
+          className="moving-clouds"
+          style={{
+            backgroundImage:
+              "url(" + require("assets/img/clouds.png").default + ")",
+          }}
+        />
         <div className="filter" />
         <Container>
           <Row>
@@ -99,8 +109,7 @@ function RegisterPage() {
         </Container>
         <div className="footer register-footer text-center">
           <h6>
-            © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Creative Tim
+            © {new Date().getFullYear()}, edward and noah 🚢
           </h6>
         </div>
       </div>

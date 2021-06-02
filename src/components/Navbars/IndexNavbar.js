@@ -19,6 +19,8 @@
 import React from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
+import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
   Button,
@@ -29,7 +31,19 @@ import {
   NavLink,
   Nav,
   Container,
+  Input,
+  InputGroup,
 } from "reactstrap";
+
+const Forms = () => {
+  return (
+    <>
+      <InputGroup size="sm">
+          <Input type="text" placeholder="Search" bsSize="sm" />
+      </InputGroup>
+    </>
+  );
+};
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -71,7 +85,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Paper Kit React
+            Freerush
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -90,7 +104,11 @@ function IndexNavbar() {
           navbar
           isOpen={navbarCollapse}
         >
-          <Nav navbar>
+          <Nav navbar className="container-fluid">
+            <NavItem className="ml-auto"> 
+              <Forms >    
+              </Forms>
+            </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
@@ -127,30 +145,40 @@ function IndexNavbar() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
                 target="_blank"
                 title="Star on GitHub"
-              >
+              ><li>
+                <Link to="/landing-page">
                 <i className="fa fa-github" />
                 <p className="d-lg-none">GitHub</p>
+                </Link>
+              </li>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
+            <Button
+                className="btn-round"
+                color="outline-warning"
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
-              </NavLink>
+              <li>
+                <Link to="/register-page">
+                <i className="nc-icon nc-book-bookmark"></i> Join us!
+                </Link>
+                </li>
+              </Button>
             </NavItem>
             <NavItem>
               <Button
                 className="btn-round"
-                color="danger"
-                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-index-navbar"
+                color="outline-danger"
                 target="_blank"
               >
-                <i className="nc-icon nc-spaceship"></i> Upgrade to Pro
+                <li>
+                <Link to="/register-page">
+                <i className="nc-icon nc-spaceship"></i> Sign in
+                </Link>
+                </li>
               </Button>
             </NavItem>
           </Nav>
