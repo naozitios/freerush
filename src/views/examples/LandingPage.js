@@ -136,7 +136,7 @@ function LandingPage() {
                     <i className="nc-icon nc-sun-fog-29" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Delightful design</h4>
+                    <h4 className="info-title">Delightful partners</h4>
                     <p>
                       Find you a great girlfriend or boyfriend who isn't crazy.
                       It will help you in the long run. Trust us!
@@ -192,10 +192,10 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://www.instagram.com/awkward_look/"
+                      target="_blank"
                     >
-                      <i className="fa fa-google-plus" />
+                      <i className="fa fa-instagram" />
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
@@ -245,10 +245,10 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://www.instagram.com/naozitio/"
+                      target="_blank"
                     >
-                      <i className="fa fa-google-plus" />
+                      <i className="fa fa-instagram" />
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
