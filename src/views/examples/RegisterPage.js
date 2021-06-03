@@ -7,7 +7,7 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * Paper Kit React - v1.3.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
+* Product Pag  e: https://www.creative-tim.com/product/paper-kit-react
 
 * Copyright 2021 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/main/LICENSE.md)
