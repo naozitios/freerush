@@ -15,7 +15,7 @@ gulp.task("licenses", async function () {
 * Product Page: https://www.creative-tim.com/product/paper-kit-react
 * Copyright 2021 Creative Tim (http://www.creative-tim.com)
 
-* Coded by Creative Tim
+* Coded by Creative Tim and Noah and Ed
 
 =========================================================
 
