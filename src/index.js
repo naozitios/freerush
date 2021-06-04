@@ -30,8 +30,9 @@ import NucleoIcons from "views/NucleoIcons.js";
 import Index from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
-import SearchPage from "views/examples/SearchPage";
-import ProductPage from "views/examples/ProductPage";
+import SearchPage from "views/examples/SearchPage.js";
+import ProductPage from "views/examples/ProductPage.js";
+import LoginPage from "views/examples/LoginPage.js";
 // others
 
 ReactDOM.render(
@@ -63,6 +64,10 @@ ReactDOM.render(
       <Route
         path="/product-page" 
         render={(props) => <ProductPage {...props} />}
+      />
+      <Route
+        path="/login-page" 
+        render={(props) => <LoginPage {...props} />}
       />
       <Redirect to="/index" />
     </Switch>
