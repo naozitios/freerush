@@ -16,7 +16,7 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 
 =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ok sures
 
 */
 import React from "react";
