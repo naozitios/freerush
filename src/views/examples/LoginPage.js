@@ -30,9 +30,9 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
-    document.body.classList.add("register-page");
+    document.body.classList.add("login-page");
     return function cleanup() {
-      document.body.classList.remove("register-page");
+      document.body.classList.remove("login-page");
     };
   });
   return (
@@ -89,8 +89,6 @@ function RegisterPage() {
                   <Input placeholder="Email" type="text" />
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
-                  <label>Client/Artist</label>
-                  <Input placeholder="Client, or Artist, or both?" type="type" />
                   <Button block className="btn-round" color="danger">
                     Register
                   </Button>
