@@ -42,7 +42,7 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/noah_login.JPG").default + ")",
+            "url(" + require("assets/img/registerpage.jpg").default + ")",
         }}
       >
         <div
