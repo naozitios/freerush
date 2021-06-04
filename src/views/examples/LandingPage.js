@@ -88,9 +88,9 @@ function LandingPage() {
                     <i className="nc-icon nc-album-2" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Beautiful Gallery</h4>
+                    <h4 className="info-title">A Myriad of Services</h4>
                     <p className="description">
-                      Check out our freelancers
+                      Take a look at the various services our artists can provide for your next event
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -104,9 +104,9 @@ function LandingPage() {
                     <i className="nc-icon nc-bulb-63" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">New Ideas</h4>
+                    <h4 className="info-title">New Ideas?</h4>
                     <p>
-                      If you are looking for inspiration on what to make just check this out.
+                      Take a look at our pool of talents that could make your event shine.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -120,9 +120,9 @@ function LandingPage() {
                     <i className="nc-icon nc-chart-bar-32" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Statistics</h4>
+                    <h4 className="info-title">Reviews</h4>
                     <p>
-                      Based on statistics, 100% of every user feels inspired by our superior web design.
+                      Take a look at our artists' profiles and reviews to see who you would work well with
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more

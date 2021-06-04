@@ -175,7 +175,7 @@ function IndexNavbar() {
                 target="_blank"
               >
                 <li>
-                <Link to="/register-page">
+                <Link to="/login-page">
                 <i className="nc-icon nc-spaceship"></i> Sign in
                 </Link>
                 </li>
