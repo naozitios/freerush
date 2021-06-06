@@ -106,7 +106,6 @@ function ProfilePage() {
               <h1>
                 Past works
               </h1>
-              
               <br />
             </Col>
           </Row>
@@ -116,6 +115,10 @@ function ProfilePage() {
             <Col><Cards></Cards></Col>
           </Row>
           <br />
+          <hr />
+          
+          <h2 className="title">Reviews</h2>
+
           <div className="nav-tabs-navigation">
             <div className="nav-tabs-wrapper">
               <Nav role="tablist" tabs>
