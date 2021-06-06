@@ -21,6 +21,7 @@ https://demos.creative-tim.com/paper-kit-react/#/landing-page?ref=pkr-github-rea
 
 */
 import React from "react";
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
@@ -36,7 +37,7 @@ import {
   InputGroup,
   Container,
   Row,
-  Col,
+  Col
 } from "reactstrap";
 
 // core components
@@ -120,13 +121,17 @@ function LandingPage() {
                     <i className="nc-icon nc-chart-bar-32" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Reviews</h4>
+                    <h4 className="info-title">Sample profile page</h4>
                     <p>
                       Take a look at our artists' profiles and reviews to see who you would work well with
                     </p>
-                    <Button className="btn-link" color="info" href="#pablo">
-                      See more
-                    </Button>
+                  
+                    <Link to="/product-page" >
+                      <Button className="btn-link" color="info">
+                        See more
+                      </Button>
+                    </Link> 
+                  
                   </div>
                 </div>
               </Col>
