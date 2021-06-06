@@ -36,12 +36,17 @@ import {
   Container,
   Row,
   Col,
+  UncontrolledCarousel
 } from "reactstrap";
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import Cards from "/Users/noahteo/Desktop/orbital/Freerush/src/views/index-sections/Cards.js";
+
+// reactstrap components
+
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -93,6 +98,14 @@ function ProfilePage() {
                 <i className="fa fa-cog" /> Settings
               </Button>
             </Col>
+          </Row>
+          <Row>
+            <Cards>
+
+            </Cards>
+            <Cards>
+
+            </Cards>
           </Row>
           <br />
           <div className="nav-tabs-navigation">
