@@ -40,14 +40,10 @@ import {
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
+import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
-import Cards from "../index-sections/ProductCard.js";
 
-// reactstrap components
-
-
-function ProfilePage() {
+function ProductPage() {
   const [activeTab, setActiveTab] = React.useState("1");
 
   const toggle = (tab) => {
@@ -66,163 +62,25 @@ function ProfilePage() {
   return (
     <>
       <ExamplesNavbar />
-      <ProfilePageHeader />
-      <div className="section profile-content">
+      <ProductPageHeader />
+      <div className="section Product-content">
+      
         <Container>
-          <div className="owner">
-            <div className="avatar">
-              <img
-                alt="..."
-                className="img-circle img-no-padding img-responsive"
-                src={require("assets/img/faces/edward.jpg").default}
-              />
-            </div>
-            <div className="name">
-              <h4 className="title">
-                Edward Loke <br />
-              </h4>
-              <h6 className="description">Magician</h6>
-            </div>
+          <div className="space"> 
           </div>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
-              <blockquote className="blockquote">
-                <p className="mb-0">Some descriptions about this fella, limit it to about 500 words?
-                talk about some things about himself. Maybe he used to be a stripper but now he is 
-                a magician. Basically, what looks good for people to procure his services.
-                </p>
-</blockquote>
+              <p>
+                Take a look at the different services our various artists and creatives have to offer. With the myriad of options that available, don't hesitate to drop them a message to ask them for a quote!
+              </p>
               <br />
               <Button className="btn-round" color="default" outline>
-                <i className="fa fa-cog" /> Settings
+                <i className="fa fa-cog" /> Filters
               </Button>
             </Col>
-          </Row>
-          <div> 
-            <hr></hr>
-          </div>
-          <Row>
-            <Col className="ml-auto mr-auto text-center" md="6">
-              <h1>
-                Past works
-              </h1>
-              <br />
-            </Col>
-          </Row>
-          <Row>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
           </Row>
           <br />
-          <hr />
           
-          <h2 className="title">Reviews</h2>
-
-          <div className="nav-tabs-navigation">
-            <div className="nav-tabs-wrapper">
-              <Nav role="tablist" tabs>
-                <NavItem>
-                  <NavLink
-                    className={activeTab === "1" ? "active" : ""}
-                    onClick={() => {
-                      toggle("1");
-                    }}
-                  >
-                    Follows
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={activeTab === "2" ? "active" : ""}
-                    onClick={() => {
-                      toggle("2");
-                    }}
-                  >
-                    Following
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </div>
-          </div>
-          {/* Tab panes */}
-          <TabContent className="following" activeTab={activeTab}>
-            <TabPane tabId="1" id="follows">
-              <Row>
-                <Col className="ml-auto mr-auto" md="6">
-                  <ul className="list-unstyled follows">
-                    <li>
-                      <Row>
-                        <Col className="ml-auto mr-auto" lg="2" md="4" xs="4">
-                          <img
-                            alt="..."
-                            className="img-circle img-no-padding img-responsive"
-                            src={
-                              require("assets/img/faces/clem-onojeghuo-2.jpg")
-                                .default
-                            }
-                          />
-                        </Col>
-                        <Col className="ml-auto mr-auto" lg="7" md="4" xs="4">
-                          <h6>
-                            Flume <br />
-                            <small>Musical Producer</small>
-                          </h6>
-                        </Col>
-                        <Col className="ml-auto mr-auto" lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                defaultChecked
-                                defaultValue=""
-                                type="checkbox"
-                              />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                    </li>
-                    <hr />
-                    <li>
-                      <Row>
-                        <Col className="mx-auto" lg="2" md="4" xs="4">
-                          <img
-                            alt="..."
-                            className="img-circle img-no-padding img-responsive"
-                            src={
-                              require("assets/img/faces/ayo-ogunseinde-2.jpg")
-                                .default
-                            }
-                          />
-                        </Col>
-                        <Col lg="7" md="4" xs="4">
-                          <h6>
-                            Banks <br />
-                            <small>Singer</small>
-                          </h6>
-                        </Col>
-                        <Col lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input defaultValue="" type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
-            </TabPane>
-            <TabPane className="text-center" tabId="2" id="following">
-              <h3 className="text-muted">Not following anyone yet :(</h3>
-              <Button className="btn-round" color="warning">
-                Find artists
-              </Button>
-            </TabPane>
-          </TabContent>
         </Container>
       </div>
       <DemoFooter />
@@ -230,4 +88,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default ProductPage;

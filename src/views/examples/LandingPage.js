@@ -109,9 +109,11 @@ function LandingPage() {
                     <p>
                       Take a look at our pool of talents that could make your event shine.
                     </p>
-                    <Button className="btn-link" color="info" href="#pablo">
-                      See more
-                    </Button>
+                    <Link to="/product-page" >
+                      <Button className="btn-link" color="info">
+                        See more
+                      </Button>
+                    </Link> 
                   </div>
                 </div>
               </Col>
@@ -126,7 +128,7 @@ function LandingPage() {
                       Take a look at our artists' profiles and reviews to see who you would work well with
                     </p>
                   
-                    <Link to="/product-page" >
+                    <Link to="/profile-page" >
                       <Button className="btn-link" color="info">
                         See more
                       </Button>

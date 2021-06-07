@@ -93,7 +93,7 @@ function ExamplesNavbar() {
           <Nav navbar>
             <NavItem>
               <NavLink to="/index" tag={Link}>
-                <i className="nc-icon nc-layout-11" /> Components
+              <i className="nc-icon nc-box"></i> Home
               </NavLink>
             </NavItem>
             <NavItem>
