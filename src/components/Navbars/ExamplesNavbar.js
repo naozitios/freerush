@@ -148,7 +148,7 @@ function ExamplesNavbar() {
               >
                 <li>
                 <Link to="/register-page">
-                <i className="nc-icon nc-spaceship"></i> Register with us!
+                <i className="nc-icon nc-spaceship" outline></i> Register with us!
                 </Link>
                 </li>
 

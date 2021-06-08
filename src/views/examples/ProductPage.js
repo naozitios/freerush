@@ -39,9 +39,9 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import IndexNavbar from "components/Navbars/IndexNavbar";
 
 function ProductPage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -61,7 +61,7 @@ function ProductPage() {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <IndexNavbar />
       <ProductPageHeader />
       <div className="section Product-content">
       
