@@ -83,9 +83,9 @@ function IndexNavbar() {
             data-placement="bottom"
             href="/index"
             target="_blank"
-            title="Coded by Creative Tim"
+            title="Go back to the HomePage"
           >
-            Freerush
+            <i className="nc-icon nc-box"></i> Freerush
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}

@@ -21,18 +21,11 @@ https://demos.creative-tim.com/paper-kit-react/#/profile-page?ref=pkr-github-rea
 
 */
 import React from "react";
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
   Button,
-  Label,
-  FormGroup,
-  Input,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
   Container,
   Row,
   Col,
@@ -40,17 +33,11 @@ import {
 
 // core components
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
+import Cards from "../index-sections/ProductCard.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
 function ProductPage() {
-  const [activeTab, setActiveTab] = React.useState("1");
-
-  const toggle = (tab) => {
-    if (activeTab !== tab) {
-      setActiveTab(tab);
-    }
-  };
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -66,20 +53,52 @@ function ProductPage() {
       <div className="section Product-content">
       
         <Container>
-          <div className="space"> 
-          </div>
           <Row>
-            <Col className="ml-auto mr-auto text-center" md="6">
-              <p>
-                Take a look at the different services our various artists and creatives have to offer. With the myriad of options that available, don't hesitate to drop them a message to ask them for a quote!
-              </p>
+            <Col className="ml-auto mr-auto text-center" md="10">
+              <h1>
+                Services our Artists Offer
+              </h1>
+              <br />
               <br />
               <Button className="btn-round" color="default" outline>
                 <i className="fa fa-cog" /> Filters
               </Button>
+              <br />
             </Col>
           </Row>
+          gotta do some iteration thing for all our products
+          <Row>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+          </Row>
+          <Row>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+          </Row>
+          <Row>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+          </Row>
           <br />
+          <Row>
+          <Link to="/product-page" >
+            <Button className="btn-link" color="info" href="#pablo">
+              Back
+            </Button>
+          </Link>
+          <Link to="/product-page" >
+            <Button className="btn-link" color="info" href="#pablo">
+              Next
+            </Button>
+          </Link>
+            
+          </Row>
           
         </Container>
       </div>

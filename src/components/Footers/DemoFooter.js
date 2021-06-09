@@ -31,7 +31,8 @@ function DemoFooter() {
             <ul>
               <li>
                 <a
-                  href="https://www.fiverr.com/"
+                  href="/register-page"
+                  
                   target="_blank"
                 >
                   Freerush
@@ -39,10 +40,10 @@ function DemoFooter() {
               </li>
               <li>
                 <a
-                  href="https://www.fiverr.com/"
+                  href="/SearchPage"
                   target="_blank"
                 >
-                  Blog
+                  SearchPage
                 </a>
               </li>
               <li>

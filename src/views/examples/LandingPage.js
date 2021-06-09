@@ -93,9 +93,11 @@ function LandingPage() {
                     <p className="description">
                       Take a look at the various services our artists can provide for your next event
                     </p>
+                    <Link to="/product-page" >
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
                     </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>
@@ -109,11 +111,9 @@ function LandingPage() {
                     <p>
                       Take a look at our pool of talents that could make your event shine.
                     </p>
-                    <Link to="/product-page" >
                       <Button className="btn-link" color="info">
                         See more
                       </Button>
-                    </Link> 
                   </div>
                 </div>
               </Col>
