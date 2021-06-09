@@ -111,9 +111,11 @@ function LandingPage() {
                     <p>
                       Take a look at our pool of talents that could make your event shine.
                     </p>
+                    <Link to="/artists-page" >
                       <Button className="btn-link" color="info">
                         See more
                       </Button>
+                      </Link>
                   </div>
                 </div>
               </Col>

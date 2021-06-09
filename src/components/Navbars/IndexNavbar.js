@@ -79,14 +79,15 @@ function IndexNavbar() {
     <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
       <Container>
         <div className="navbar-translate">
+        <Link to="/LandingPage">
           <NavbarBrand
             data-placement="bottom"
-            href="/index"
             target="_blank"
             title="Go back to the HomePage"
           >
             <i className="nc-icon nc-box"></i> Freerush
           </NavbarBrand>
+          </Link>
           <button
             aria-expanded={navbarCollapse}
             className={classnames("navbar-toggler navbar-toggler", {

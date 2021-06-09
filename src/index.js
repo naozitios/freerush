@@ -33,6 +33,7 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import SearchPage from "views/examples/SearchPage.js";
 import ProductPage from "views/examples/ProductPage.js";
 import LoginPage from "views/examples/LoginPage.js";
+import ArtistsPage from "views/examples/ArtistsPage.js"
 import NucleoPage from "views/NucleoIcons.js";
 // others
 
@@ -57,6 +58,10 @@ ReactDOM.render(
       <Route
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
+      />
+      <Route
+        path="/artists-page"
+        render={(props) => <ArtistsPage {...props} />}
       />
       <Route
         path="/search-page" 
