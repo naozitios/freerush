@@ -62,7 +62,7 @@ function LandingPage() {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" md="8">
-                <h2 className="title">Let's talk product</h2>
+                <h1 className="title">Let's talk product</h1>
                 <h5 className="description">
                   You know those things you do in life that just do not bring meaning to it? That is us everyday.
                   We want to break that trend. Smash it against the wall. Let the world know that you are not defined 
