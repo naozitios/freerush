@@ -93,7 +93,7 @@ function LandingPage() {
                     <p className="description">
                       Take a look at the various services our artists can provide for your next event
                     </p>
-                    <Link to="/product-page" >
+                    <Link to="/search-page" >
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
                     </Button>
