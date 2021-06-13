@@ -36,6 +36,8 @@ import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import Cards from "../index-sections/ProductCard.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import FilterButton from "../index-sections/FilterButton.js";
+import SortButton from "../index-sections/SortButton.js";
 
 function ProductPage() {
 
@@ -59,14 +61,16 @@ function ProductPage() {
                 Services our Artists Offer
               </h1>
               <br />
-              <br />
-              <Button className="btn-round" color="default" outline>
-                <i className="fa fa-cog" /> Filters
-              </Button>
-              <br />
             </Col>
           </Row>
-          gotta do some iteration thing for all our products
+          <Row>
+            <FilterButton></FilterButton>
+            &nbsp;
+            &nbsp;
+            <SortButton></SortButton>
+          </Row>
+          <br />
+          <br />
           <Row>
             <Col><Cards></Cards></Col>
             <Col><Cards></Cards></Col>

@@ -94,9 +94,11 @@ function IndexNavbar() {
           navbar
           isOpen={navbarCollapse}
         >
-          <SearchBar></SearchBar>
+          
           <Nav navbar className="container-fluid">
-            <NavItem className="ml-auto"> 
+            <NavItem className="col-md-6"> 
+              <SearchBar>
+              </SearchBar>
             </NavItem>
             <NavItem>
               <NavLink
