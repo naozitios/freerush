@@ -74,7 +74,7 @@ function IndexNavbar() {
             target="_blank"
             title="Go back to the HomePage"
           >
-            <i className="nc-icon nc-box"></i> Freerush
+            <i className="nc-icon nc-atom"></i> Freerush
           </NavbarBrand>
           </Link>
           <button
