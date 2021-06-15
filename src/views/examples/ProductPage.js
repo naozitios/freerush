@@ -24,17 +24,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // reactstrap components
-import { Button, NavItem, Container, Row, Col } from "reactstrap";
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  TabContent,
+  TabPane,
+  NavItem,
+  NavLink,
+  Nav,
+} from "reactstrap";
 
 // core components
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import Cards from "../index-sections/ProductCard.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
-import FilterButton from "../index-sections/FilterButton.js";
-import SortButton from "../index-sections/SortButton.js";
+import Carousels from "../index-sections/Carousel.js";
 
 function ProductPage() {
+  const [activeTab, setActiveTab] = React.useState("1");
+
+  const toggle = (tab) => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
+    }
+  };
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -52,51 +69,72 @@ function ProductPage() {
             <Col className="mr-auto" md="10">
               <h1 className="mb-1 text-muted">Cock Magic for guys</h1>
               <br></br>
-              <h5>
-                The cock magic that all guys like, some like it harder than the
-                rest, but at the end of the day once it goes in the customer is
-                satisfied.
-              </h5>
             </Col>
             <div>
               <Row>
-                <Col sm="9">
+                <Col sm="10">
                   <img
-                    width="700"
+                    width="750"
                     height="400"
                     align="left"
                     src={require("assets/img/bird.jpg").default}
+                    alt="ToCome"
                   />
                 </Col>
-                <Col sm="3">
+                <Col sm="2">
                   <Container>
-                    <Col className="ml-auto" md="10">
+                    <Col className="ml-auto">
                       <div className="owner">
-                        <img
-                          alt="..."
-                          className="img-circle img-no-padding img-responsive"
-                          width="100"
-                          src={require("assets/img/faces/edward.jpg").default}
-                        />
+                        <Link to="profile-page">
+                          <img
+                            alt="..."
+                            className="img-circle img-no-padding img-responsive"
+                            width="100"
+                            src={require("assets/img/faces/edward.jpg").default}
+                            title="Check out their profile!"
+                          />
+                        </Link>
                         <div className="name">
-                          <h4 className="title">Edward Loke</h4>
-                          <h6 className="description">Magician</h6>
                           <Link to="profile-page">
-                            <Button
-                              className="btn-round"
-                              color="default"
-                              outline
+                            <h4
+                              className="title"
+                              title="Check out their profile!"
                             >
-                              <i className="nc-icon nc-badge" /> Profile
-                            </Button>
+                              Edward Loke
+                            </h4>
                           </Link>
+                          <h6 className="description">Magician</h6>
                         </div>
                       </div>
                     </Col>
+                    <hr />
+                    <Row>
+                      <div>
+                        Cost:
+                        <h6>$100</h6>
+                      </div>
+                      <div>
+                        Average rating:
+                        <h6>5 stars</h6>
+                      </div>
+                      <div>
+                        Procurement count: <h6>100</h6>
+                      </div>
+                    </Row>
                   </Container>
                 </Col>
               </Row>
-              <p> Some words </p>
+              &nbsp;
+              <Row>
+                <h5>
+                  {" "}
+                  The cock magic that all guys like, some like it harder than
+                  the rest, but at the end of the day once it goes in the
+                  customer is satisfied.{" "}
+                </h5>
+                &nbsp;
+              </Row>
+              <br />
               <Link to="profile-page">
                 <Button className="btn-round" color="warning" outline="warning">
                   <i className="nc-icon nc-email-85" /> Chat
@@ -108,54 +146,100 @@ function ProductPage() {
                   <i className="nc-icon nc-credit-card" /> Purchase
                 </Button>
               </Link>
+              &nbsp;
+              <Button className="btn-round" color="danger" outline="danger">
+                  <i className="nc-icon nc-credit-card" /> Check availability
+                </Button>
             </div>
           </Row>
           <br />
-          <br />
-          <div>
-            <hr></hr>
-          </div>
-          <Row>
-            <Col className="ml-auto mr-auto text-center" md="6">
-              <h1>Other Works</h1>
-              <br />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Cards></Cards>
-            </Col>
-            <Col>
-              <Cards></Cards>
-            </Col>
-            <Col>
-              <Cards></Cards>
-            </Col>
-            <Col>
-              <Cards></Cards>
-            </Col>
-          </Row>
-          <br />
-          <Row>
-            <Link to="/product-page">
-              <Button className="btn-link" color="info" href="#pablo">
-                Back
-              </Button>
-            </Link>
-            <Link to="/product-page">
-              <Button className="btn-link" color="info" href="#pablo">
-                Next
-              </Button>
-            </Link>
-            <Link to="profile-page">
-              <Button className="btn-round" color="default" outline>
-                <i className="nc-icon nc-badge" /> Profile
-              </Button>
-            </Link>
-          </Row>
         </Container>
       </div>
-
+      <div className="nav-tabs-navigation">
+        <div className="nav-tabs-wrapper">
+          <Nav role="tablist" tabs>
+            <NavItem>
+              <NavLink
+                className={activeTab === "1" ? "active" : ""}
+                onClick={() => {
+                  toggle("1");
+                }}
+              >
+                Extra info
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={activeTab === "2" ? "active" : ""}
+                onClick={() => {
+                  toggle("2");
+                }}
+              >
+                Reviews
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={activeTab === "3" ? "active" : ""}
+                onClick={() => {
+                  toggle("3");
+                }}
+              >
+                Similar works
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </div>
+      </div>
+      <TabContent className="following" activeTab={activeTab}>
+        <TabPane tabId="1" id="follows">
+        <Row>
+                <Col className="ml-auto mr-auto" md="6">
+                  <ul className="list-unstyled follows">
+                    <li>
+                      <Row>
+                        <Col
+                          className="ml-auto mr-centre"
+                          lg="8"
+                          md="10"
+                          xs="10"
+                        >
+                          <h6>Average Rating: ⭐️⭐️⭐️⭐️⭐️</h6>
+                        </Col>
+                      </Row>
+                    </li>
+                    <li>
+                      <Row>
+                        <Col
+                          className="ml-auto mr-centre"
+                          lg="8"
+                          md="10"
+                          xs="10"
+                        >
+                          <h6>Total Procurement count: 0</h6>
+                        </Col>
+                      </Row>
+                    </li>
+                  </ul>
+                </Col>
+              </Row>
+        </TabPane>
+        <TabPane className="text-center" tabId="2" id="following">
+          <Carousels></Carousels>
+        </TabPane>
+        <TabPane className="text-center" tabId="3" id="following">
+        <Row>
+            <Col className="ml-auto mr-auto" md="10">
+            <Row>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+          </Row>
+            </Col>
+          </Row>
+        </TabPane>
+      </TabContent>
       <DemoFooter />
     </>
   );
