@@ -145,14 +145,16 @@ function LandingPage() {
                     <i className="nc-icon nc-sun-fog-29" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Delightful partners</h4>
+                    <h4 className="info-title">Sample Product Page</h4>
                     <p>
                       Find you a great girlfriend or boyfriend who isn't crazy.
                       It will help you in the long run. Trust us!
                     </p>
+                    <Link to="/product-page" >
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
                     </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>

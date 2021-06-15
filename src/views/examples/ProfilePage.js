@@ -45,7 +45,6 @@ import IndexNavbar from "components/Navbars/IndexNavbar";
 
 // reactstrap components
 
-
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
 

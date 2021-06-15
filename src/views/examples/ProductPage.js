@@ -26,13 +26,14 @@ import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
+  NavItem,
   Container,
   Row,
   Col,
 } from "reactstrap";
 
 // core components
-import ProductPageHeader from "components/Headers/ProductPageHeader.js";
+import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import Cards from "../index-sections/ProductCard.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
@@ -51,45 +52,82 @@ function ProductPage() {
   return (
     <>
       <IndexNavbar />
-      <ProductPageHeader />
-      <div className="section Product-content">
-      
+      <ProfilePageHeader />
+      <div className="section profile-content">
         <Container>
-          <Row>
+          <div className="owner">
+            <div className="avatar">
+              <img
+                alt="..."
+                className="img-circle img-no-padding img-responsive"
+                src={require("assets/img/faces/edward.jpg").default}
+              />
+            </div>
+            <div className="name">
+              <h4 className="title">
+                Edward Loke <br />
+              </h4>
+              <h6 className="description">Magician</h6>
+
+              <Link to="profile-page">
+              <Button className="btn-round" color="default" outline>
+                <i className="nc-icon nc-badge" />  Profile
+              </Button>
+              </Link>
+            </div>
+          </div>
+          <Row>           
             <Col className="ml-auto mr-auto text-center" md="10">
+            <br></br>
+            <h1 className="mb-2 text-muted">Cock Magic for gUy5</h1>
+            <h3>The cock magic that all guys like, some like it harder than the rest, but at the end of the day once it goes in the customer is satisfied.</h3>
+            <br></br>
+            </Col>
+            <div>
+            <img  
+            width="800"
+            height="450"
+            align="left"
+            src={
+              require("assets/img/ed-performing.jpg")
+              .default}
+            />
+          <p>Purchase this product now or get in contact with the service provider with a click of a button!</p>
+          
+          <Link to="profile-page">
+              <Button className="btn-round" color="primary" outline="warning">
+                <i className="nc-icon nc-badge" />  Chat
+              </Button>
+          </Link>
+          <br>
+          </br>
+          <Link to="profile-page">
+             <Button className="btn-round" color="primary" outline="warning">
+               Purchase
+              </Button>
+          </Link>
+          </div>
+          </Row>
+          <br />
+          <br />
+          <div> 
+            <hr></hr>
+          </div>
+          <Row>
+          <Col className="ml-auto mr-auto text-center" md="6">
               <h1>
-                Services our Artists Offer
+                Other Works
               </h1>
               <br />
             </Col>
-          </Row>
-          <Row>
-            <FilterButton></FilterButton>
-            &nbsp;
-            &nbsp;
-            <SortButton></SortButton>
-          </Row>
-          <br />
-          <br />
-          <Row>
+            </Row>
+            <Row>
             <Col><Cards></Cards></Col>
             <Col><Cards></Cards></Col>
             <Col><Cards></Cards></Col>
             <Col><Cards></Cards></Col>
           </Row>
-          <Row>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-          </Row>
-          <Row>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-          </Row>
-          <br />
+           <br />
           <Row>
           <Link to="/product-page" >
             <Button className="btn-link" color="info" href="#pablo">
@@ -101,12 +139,17 @@ function ProductPage() {
               Next
             </Button>
           </Link>
-            
+          <Link to="profile-page">
+              <Button className="btn-round" color="default" outline>
+                <i className="nc-icon nc-badge" />  Profile
+              </Button>
+              </Link>
           </Row>
-          
-        </Container>
-      </div>
+          </Container>
+        </div>
+
       <DemoFooter />
+      
     </>
   );
 }
