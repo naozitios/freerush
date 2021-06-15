@@ -44,7 +44,7 @@ function ProductPageHeader() {
       <div
         style={{
           backgroundImage:
-            "url(" + require("assets/img/drinks.jpg").default + ")",
+            "url(" + require("assets/img/cloudsheader.jpg").default + ")",
         }}
         className="page-header page-header-xs"
         data-parallax={true}
