@@ -62,7 +62,7 @@ function LandingPage() {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" md="8">
-                <h2 className="title">Let's talk product</h2>
+                <h1 className="title">Let's talk product</h1>
                 <h5 className="description">
                   You know those things you do in life that just do not bring meaning to it? That is us everyday.
                   We want to break that trend. Smash it against the wall. Let the world know that you are not defined 
@@ -93,9 +93,11 @@ function LandingPage() {
                     <p className="description">
                       Take a look at the various services our artists can provide for your next event
                     </p>
+                    <Link to="/search-page" >
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
                     </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>
@@ -109,9 +111,11 @@ function LandingPage() {
                     <p>
                       Take a look at our pool of talents that could make your event shine.
                     </p>
-                    <Button className="btn-link" color="info" href="#pablo">
-                      See more
-                    </Button>
+                    <Link to="/artists-page" >
+                      <Button className="btn-link" color="info">
+                        See more
+                      </Button>
+                      </Link>
                   </div>
                 </div>
               </Col>
@@ -126,7 +130,7 @@ function LandingPage() {
                       Take a look at our artists' profiles and reviews to see who you would work well with
                     </p>
                   
-                    <Link to="/product-page" >
+                    <Link to="/profile-page" >
                       <Button className="btn-link" color="info">
                         See more
                       </Button>
@@ -141,14 +145,16 @@ function LandingPage() {
                     <i className="nc-icon nc-sun-fog-29" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Delightful partners</h4>
+                    <h4 className="info-title">Sample Product Page</h4>
                     <p>
                       Find you a great girlfriend or boyfriend who isn't crazy.
                       It will help you in the long run. Trust us!
                     </p>
+                    <Link to="/product-page" >
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
                     </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>

@@ -20,6 +20,7 @@ import React from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 import { Link } from "react-router-dom";
+import SearchBar from "../../views/index-sections/SearchBar.js";
 
 // reactstrap components
 import {
@@ -31,19 +32,7 @@ import {
   NavLink,
   Nav,
   Container,
-  Input,
-  InputGroup,
 } from "reactstrap";
-
-const Forms = () => {
-  return (
-    <>
-      <InputGroup size="sm">
-          <Input type="text" placeholder="Search" bsSize="sm" />
-      </InputGroup>
-    </>
-  );
-};
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -79,14 +68,15 @@ function IndexNavbar() {
     <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
       <Container>
         <div className="navbar-translate">
+        <Link to="/LandingPage">
           <NavbarBrand
             data-placement="bottom"
-            href="/index"
             target="_blank"
-            title="Coded by Creative Tim"
+            title="Go back to the HomePage"
           >
-            Freerush
+            <i className="nc-icon nc-atom"></i> Freerush
           </NavbarBrand>
+          </Link>
           <button
             aria-expanded={navbarCollapse}
             className={classnames("navbar-toggler navbar-toggler", {
@@ -104,21 +94,11 @@ function IndexNavbar() {
           navbar
           isOpen={navbarCollapse}
         >
+          
           <Nav navbar className="container-fluid">
-            <NavItem className="ml-auto"> 
-              <Forms >    
-              </Forms>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
-              >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
-              </NavLink>
+            <NavItem className="col-md-6"> 
+              <SearchBar>
+              </SearchBar>
             </NavItem>
             <NavItem>
               <NavLink
@@ -140,19 +120,6 @@ function IndexNavbar() {
               >
                 <i className="fa fa-instagram" />
                 <p className="d-lg-none">Instagram</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                target="_blank"
-                title="Star on GitHub"
-              ><li>
-                <Link to="/landing-page">
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
-                </Link>
-              </li>
               </NavLink>
             </NavItem>
             <NavItem>

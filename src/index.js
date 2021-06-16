@@ -33,6 +33,8 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import SearchPage from "views/examples/SearchPage.js";
 import ProductPage from "views/examples/ProductPage.js";
 import LoginPage from "views/examples/LoginPage.js";
+import ArtistsPage from "views/examples/ArtistsPage.js"
+import NucleoPage from "views/NucleoIcons.js";
 // others
 
 ReactDOM.render(
@@ -58,6 +60,10 @@ ReactDOM.render(
         render={(props) => <RegisterPage {...props} />}
       />
       <Route
+        path="/artists-page"
+        render={(props) => <ArtistsPage {...props} />}
+      />
+      <Route
         path="/search-page" 
         render={(props) => <SearchPage {...props} />}
       />
@@ -68,6 +74,10 @@ ReactDOM.render(
       <Route
         path="/login-page" 
         render={(props) => <LoginPage {...props} />}
+      />
+      <Route
+        path="/icons-page" 
+        render={(props) => <NucleoPage {...props} />}
       />
       <Redirect to="/index" />
     </Switch>

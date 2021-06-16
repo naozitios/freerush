@@ -25,9 +25,6 @@ import React from "react";
 // reactstrap components
 import {
   Button,
-  Label,
-  FormGroup,
-  Input,
   NavItem,
   NavLink,
   Nav,
@@ -39,9 +36,14 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+//import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import Cards from "../index-sections/ProductCard.js";
+import Carousels from "../index-sections/Carousel.js";
+import IndexNavbar from "components/Navbars/IndexNavbar";
+
+// reactstrap components
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -61,7 +63,7 @@ function ProfilePage() {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <IndexNavbar />
       <ProfilePageHeader />
       <div className="section profile-content">
         <Container>
@@ -70,29 +72,45 @@ function ProfilePage() {
               <img
                 alt="..."
                 className="img-circle img-no-padding img-responsive"
-                src={require("assets/img/faces/joe-gardner-2.jpg").default}
+                src={require("assets/img/faces/edward.jpg").default}
               />
             </div>
             <div className="name">
               <h4 className="title">
-                Jane Faker <br />
+                Edward Loke <br />
               </h4>
-              <h6 className="description">Music Producer</h6>
+              <h6 className="description">Magician</h6>
             </div>
           </div>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
-              <p>
-                An artist of considerable range, Jane Faker — the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-                and records all of his own music, giving it a warm, intimate
-                feel with a solid groove structure.
-              </p>
+              <blockquote className="blockquote">
+                <p className="mb-0">Some descriptions about this fella, limit it to about 500 words?
+                talk about some things about himself. Maybe he used to be a stripper but now he is 
+                a magician. Basically, what looks good for people to procure his services.
+                </p>
+              </blockquote>
               <br />
               <Button className="btn-round" color="default" outline>
-                <i className="fa fa-cog" /> Settings
+                <i className="nc-icon nc-badge" />  Past works
               </Button>
             </Col>
+          </Row>
+          <div> 
+            <hr></hr>
+          </div>
+          <Row>
+            <Col className="ml-auto mr-auto text-center" md="6">
+              <h1>
+                Current talents
+              </h1>
+              <br />
+            </Col>
+          </Row>
+          <Row>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
+            <Col><Cards></Cards></Col>
           </Row>
           <br />
           <div className="nav-tabs-navigation">
@@ -105,7 +123,7 @@ function ProfilePage() {
                       toggle("1");
                     }}
                   >
-                    Follows
+                    Stats
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -115,7 +133,7 @@ function ProfilePage() {
                       toggle("2");
                     }}
                   >
-                    Following
+                    Reviews
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -129,62 +147,19 @@ function ProfilePage() {
                   <ul className="list-unstyled follows">
                     <li>
                       <Row>
-                        <Col className="ml-auto mr-auto" lg="2" md="4" xs="4">
-                          <img
-                            alt="..."
-                            className="img-circle img-no-padding img-responsive"
-                            src={
-                              require("assets/img/faces/clem-onojeghuo-2.jpg")
-                                .default
-                            }
-                          />
-                        </Col>
-                        <Col className="ml-auto mr-auto" lg="7" md="4" xs="4">
+                        <Col className="ml-auto mr-centre" lg="8" md="10" xs="10">
                           <h6>
-                            Flume <br />
-                            <small>Musical Producer</small>
+                            Average Rating: ⭐️⭐️⭐️⭐️⭐️
                           </h6>
-                        </Col>
-                        <Col className="ml-auto mr-auto" lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                defaultChecked
-                                defaultValue=""
-                                type="checkbox"
-                              />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
                         </Col>
                       </Row>
                     </li>
-                    <hr />
                     <li>
                       <Row>
-                        <Col className="mx-auto" lg="2" md="4" xs="4">
-                          <img
-                            alt="..."
-                            className="img-circle img-no-padding img-responsive"
-                            src={
-                              require("assets/img/faces/ayo-ogunseinde-2.jpg")
-                                .default
-                            }
-                          />
-                        </Col>
-                        <Col lg="7" md="4" xs="4">
+                        <Col className="ml-auto mr-centre" lg="8" md="10" xs="10">
                           <h6>
-                            Banks <br />
-                            <small>Singer</small>
+                            Total Procurement count: 0
                           </h6>
-                        </Col>
-                        <Col lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input defaultValue="" type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
                         </Col>
                       </Row>
                     </li>
@@ -193,10 +168,7 @@ function ProfilePage() {
               </Row>
             </TabPane>
             <TabPane className="text-center" tabId="2" id="following">
-              <h3 className="text-muted">Not following anyone yet :(</h3>
-              <Button className="btn-round" color="warning">
-                Find artists
-              </Button>
+              <Carousels></Carousels>
             </TabPane>
           </TabContent>
         </Container>
