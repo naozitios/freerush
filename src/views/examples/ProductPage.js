@@ -34,14 +34,16 @@ import {
   NavItem,
   NavLink,
   Nav,
+  Carousel,
 } from "reactstrap";
 
 // core components
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
-import Cards from "../index-sections/ProductCard.js";
+import Cards from "../index-sections/SmallProductCard.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import Carousels from "../index-sections/Carousel.js";
+import ProductCarousel from "../index-sections/ProductCarousel";
 
 function ProductPage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -110,7 +112,7 @@ function ProductPage() {
                     <hr />
                     <Row>
                       <div>
-                        Cost:
+                        Rating/hour:
                         <h6>$100</h6>
                       </div>
                       <div>
@@ -148,8 +150,8 @@ function ProductPage() {
               </Link>
               &nbsp;
               <Button className="btn-round" color="danger" outline="danger">
-                  <i className="nc-icon nc-credit-card" /> Check availability
-                </Button>
+                <i className="nc-icon nc-credit-card" /> Check availability
+              </Button>
             </div>
           </Row>
           <br />
@@ -165,7 +167,7 @@ function ProductPage() {
                   toggle("1");
                 }}
               >
-                Extra info
+                Description
               </NavLink>
             </NavItem>
             <NavItem>
@@ -185,7 +187,7 @@ function ProductPage() {
                   toggle("3");
                 }}
               >
-                Similar works
+                Extra Info
               </NavLink>
             </NavItem>
           </Nav>
@@ -193,53 +195,79 @@ function ProductPage() {
       </div>
       <TabContent className="following" activeTab={activeTab}>
         <TabPane tabId="1" id="follows">
-        <Row>
-                <Col className="ml-auto mr-auto" md="6">
-                  <ul className="list-unstyled follows">
-                    <li>
-                      <Row>
-                        <Col
-                          className="ml-auto mr-centre"
-                          lg="8"
-                          md="10"
-                          xs="10"
-                        >
-                          <h6>Average Rating: ⭐️⭐️⭐️⭐️⭐️</h6>
-                        </Col>
-                      </Row>
-                    </li>
-                    <li>
-                      <Row>
-                        <Col
-                          className="ml-auto mr-centre"
-                          lg="8"
-                          md="10"
-                          xs="10"
-                        >
-                          <h6>Total Procurement count: 0</h6>
-                        </Col>
-                      </Row>
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
+          <Row>
+            <Col className="ml-auto mr-auto" md="6">
+              <h4>
+                this is a full essay on the elaboration of his service, his
+                speech on why his Magic is better than the rest, why everyone
+                deserves to give him and only him a shot and not the rest.
+                <br />
+                So why should you use me instead of someone else? It is because
+                i know how to supise my clients. It is with a well placed
+                spelling error.
+              </h4>
+              <br></br>
+            </Col>
+          </Row>
         </TabPane>
         <TabPane className="text-center" tabId="2" id="following">
           <Carousels></Carousels>
         </TabPane>
-        <TabPane className="text-center" tabId="3" id="following">
-        <Row>
-            <Col className="ml-auto mr-auto" md="10">
-            <Row>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-            <Col><Cards></Cards></Col>
-          </Row>
+        <TabPane tabId="3" id="follows">
+          <Row>
+            <Col className="ml-auto mr-auto" md="6">
+              <ul className="list-unstyled follows">
+                <li>
+                  <Row>
+                    <Col className="ml-auto mr-auto" lg="6" md="6" xs="6">
+                      <h6>Rating/hour: $1000</h6>
+                    </Col>
+                    <Col className="ml-auto mr-auto" lg="6" md="6" xs="6">
+                      <h6>Recommended Time: 1/2 hour </h6>
+                    </Col>
+                  </Row>
+                </li>
+                <li>
+                  <Row>
+                    <Col className="ml-auto mr-auto" lg="6" md="6" xs="6">
+                      <h6>Average Rating: ⭐️⭐️⭐️⭐️⭐️</h6>
+                    </Col>
+                    <Col className="ml-auto mr-auto" lg="6" md="6" xs="6">
+                      <h6>Total Procurement count: 0</h6>
+                    </Col>
+                  </Row>
+                </li>
+              </ul>
             </Col>
           </Row>
         </TabPane>
       </TabContent>
+      <hr></hr>
+      <Row>
+        <Col md="1"></Col>
+        <Col className="mr-auto" md="11">
+          <h1 className="mb-1 text-muted">Recommended for you</h1>
+          <br></br>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="ml-auto mr-auto" md="11">
+          <Row>
+            <Col>
+              <Cards></Cards>
+            </Col>
+            <Col>
+              <Cards></Cards>
+            </Col>
+            <Col>
+              <Cards></Cards>
+            </Col>
+            <Col>
+              <Cards></Cards>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
       <DemoFooter />
     </>
   );
