@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody, CardLink,
+  Card, CardBody, CardLink,
   CardTitle, CardSubtitle
 } from 'reactstrap';
 
@@ -10,8 +10,8 @@ const Cards = (props) => {
       <CardLink href="#">
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Product title</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Product subtitle</CardSubtitle>
+          <CardTitle tag="h5">Magic Class</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Edward Loke</CardSubtitle>
         </CardBody>
 
         <CardBody>

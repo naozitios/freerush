@@ -34,7 +34,6 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Carousel,
 } from "reactstrap";
 
 // core components
@@ -75,13 +74,14 @@ function ProductPage() {
             <div>
               <Row>
                 <Col sm="10">
-                  <img
+                  {/*                   <img
                     width="750"
                     height="400"
                     align="left"
                     src={require("assets/img/bird.jpg").default}
                     alt="ToCome"
-                  />
+                  /> */}
+                  <ProductCarousel></ProductCarousel>
                 </Col>
                 <Col sm="2">
                   <Container>
