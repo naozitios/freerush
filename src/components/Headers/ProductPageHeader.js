@@ -46,7 +46,7 @@ function ProductPageHeader() {
           backgroundImage:
             "url(" + require("assets/img/cloudsheader.jpg").default + ")",
         }}
-        className="page-header page-header-xs"
+        className="page-header page-header-xxs"
         data-parallax={true}
         ref={pageHeader}
       >

@@ -18,6 +18,7 @@
 */
 import React from "react";
 
+import './Productpage.css'
 // reactstrap components
 
 // core components
