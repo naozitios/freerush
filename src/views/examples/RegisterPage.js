@@ -90,7 +90,9 @@ function RegisterPage() {
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
                   <label>Client/Artist</label>
-                  <Input placeholder="Client, or Artist, or both?" type="type" />
+                  <Input placeholder="Client, or Artist, or both?" type="C/A" />
+                  <label>Short Description</label>
+                  <Input placeholder="Tell us about yourself!" type="profile_desc" />
                   <Button block className="btn-round" color="danger">
                     Register
                   </Button>
