@@ -19,13 +19,15 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ok sures
 
 */
-import React from "react";
+import React, {useState} from "react";
+import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -35,6 +37,11 @@ function RegisterPage() {
       document.body.classList.remove("register-page");
     };
   });
+
+  const createProfile = () => {
+    const create = firebase.database().ref("name")
+  };
+
   return (
     <>
       <IndexNavbar />
@@ -57,56 +64,22 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Welcome</h3>
-                <div className="social-line text-center">
-                  <Button
-                    className="btn-neutral btn-just-icon mr-1"
-                    color="facebook"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-facebook-square" />
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-just-icon mr-1"
-                    color="google"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-google-plus" />
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-just-icon"
-                    color="twitter"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-twitter" />
-                  </Button>
-                </div>
+                <h3 className="title mx-auto">Register with us</h3>
                 <Form className="register-form">
+                  <label>Username</label>
+                  <Input placeholder="Email" type="text"/>
                   <label>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input placeholder="Email" type="text"/>
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
-                  <label>Client/Artist</label>
+                  <label>Confirmed Password</label>
                   <Input placeholder="Client, or Artist, or both?" type="C/A" />
-                  <label>Short Description</label>
-                  <Input placeholder="Tell us about yourself!" type="profile_desc" />
+                  <Link to="/Setup-page">
                   <Button block className="btn-round" color="danger">
                     Register
                   </Button>
+                  </Link>
                 </Form>
-                <div className="forgot">
-                  <Button
-                    className="btn-link"
-                    color="danger"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    Forgot password?
-                  </Button>
-                </div>
               </Card>
             </Col>
           </Row>
