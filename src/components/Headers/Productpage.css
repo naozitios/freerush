@@ -1,3 +1,6 @@
 .page-header-xxs{
     min-height: 20vh !important;
 }
+.page-header-xxxs{
+    min-height: 14vh !important;
+}

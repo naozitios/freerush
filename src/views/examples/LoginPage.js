@@ -90,7 +90,7 @@ function RegisterPage() {
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" color="danger">
-                    Register
+                    Login
                   </Button>
                 </Form>
                 <div className="forgot">
