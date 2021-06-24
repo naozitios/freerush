@@ -19,7 +19,7 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ok sures
 
 */
-import React, {useState} from "react";
+import React, { useState } from "react";
 import firebase from "../../firebase.js";
 
 // reactstrap components
@@ -28,6 +28,13 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import { Link } from "react-router-dom";
+
+const db = firebase.firestore().collection("users");
+
+//adds details to database
+function addUser(newUser) {
+  db.doc(newUser.id).set(newUser)
+}
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -38,9 +45,10 @@ function RegisterPage() {
     };
   });
 
-  const createProfile = () => {
-    const create = firebase.database().ref("name")
-  };
+  const [Username, setUsername] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [CPassword, setCPassword] = useState("");
 
   return (
     <>
@@ -65,19 +73,49 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
-                <Form className="register-form">
+                <Form
+                  className="register-form"
+                >
                   <label>Username</label>
-                  <Input placeholder="Email" type="text"/>
+                  <Input
+                    placeholder="Username"
+                    type="text"
+                    value={Username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                   <label>Email</label>
-                  <Input placeholder="Email" type="text"/>
+                  <Input
+                    placeholder="Email"
+                    type="text"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <label>Password</label>
-                  <Input placeholder="Password" type="password" />
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={Password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                   <label>Confirmed Password</label>
-                  <Input placeholder="Client, or Artist, or both?" type="C/A" />
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={CPassword}
+                    onChange={(e) => setCPassword(e.target.value)}
+                  />
                   <Link to="/Setup-page">
-                  <Button block className="btn-round" color="danger">
-                    Register
-                  </Button>
+                    <Button
+                      block
+                      className="btn-round"
+                      color="danger"
+                      type="submit"
+                      onClick={() => addUser({Username, Email, Password})}
+                    >
+                      Register
+                    </Button>
                   </Link>
                 </Form>
               </Card>
@@ -85,9 +123,7 @@ function RegisterPage() {
           </Row>
         </Container>
         <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, edward and noah 🚢
-          </h6>
+          <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>
       </div>
     </>

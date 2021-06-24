@@ -36,7 +36,6 @@ import IndexNavbar from "components/Navbars/IndexNavbar";
 import RegistryDetails from "../index-sections/ProductDetails.js";
 
 function ProductPage() {
-
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -53,7 +52,7 @@ function ProductPage() {
         <Container>
           <Row>
             <Col className="mr-auto" md="10">
-              <h1 className="mb-1 text-muted">Personal Information</h1>
+              <h1 className="mb-1 text-muted">Service Information</h1>
               <br></br>
             </Col> 
             <Container>
