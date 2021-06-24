@@ -19,8 +19,10 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ok sures
 
 */
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import firebase from "../../firebase.js";
+const db = firebase.database();
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
@@ -38,9 +40,9 @@ function RegisterPage() {
     };
   });
 
-  const createProfile = () => {
-    const create = firebase.database().ref("name")
-  };
+  const [player1, setPlayer1] = useState("Player 1");
+  const [player2, setPlayer2] = useState("Player 2");
+  const router = useRouter();
 
   return (
     <>
@@ -65,19 +67,35 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
-                <Form className="register-form">
+                <Form
+                  className="register-form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const profileRef = db.ref("profile");
+                    const newProfileRef = profileRef.push();
+                    newProfileRef.set({
+                      //information
+                    });
+                    router.push(`/Setup-page/${newProfileRef.key}`);
+                  }}
+                >
                   <label>Username</label>
-                  <Input placeholder="Email" type="text"/>
+                  <Input placeholder="Email" type="text" />
                   <label>Email</label>
-                  <Input placeholder="Email" type="text"/>
+                  <Input placeholder="Email" type="text" />
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
                   <label>Confirmed Password</label>
                   <Input placeholder="Client, or Artist, or both?" type="C/A" />
                   <Link to="/Setup-page">
-                  <Button block className="btn-round" color="danger">
-                    Register
-                  </Button>
+                    <Button
+                      block
+                      className="btn-round"
+                      color="danger"
+                      type="submit"
+                    >
+                      Register
+                    </Button>
                   </Link>
                 </Form>
               </Card>
@@ -85,9 +103,7 @@ function RegisterPage() {
           </Row>
         </Container>
         <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, edward and noah 🚢
-          </h6>
+          <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>
       </div>
     </>
