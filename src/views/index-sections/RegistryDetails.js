@@ -1,50 +1,102 @@
 import React from "react";
+import firebase from "../../firebase.js";
 
 import { FormGroup, Label, Input, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
+const db = firebase.firestore().collection("users");
+
+function addInfo(newInfo) {
+  db.doc(newInfo.id).set(newInfo);
+}
 const Forms = () => {
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [Role, setRole] = useState("");
+  const [Address, setAddress] = useState("");
+  const [City, setCity] = useState("");
+  const [Area, setState] = useState("");
+  const [PostalCode, setPostalCode] = useState("");
+  const [Description, setDescription] = useState("");
+
   return (
     <>
       <form>
         <div className="form-row">
           <FormGroup className="col-md-6">
             <Label for="inputEmail4">First Name</Label>
-            <Input type="email" id="inputEmail4" placeholder="First Name" />
+            <Input
+              type="text"
+              placeholder="First Name"
+              value={FirstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
           </FormGroup>
           <FormGroup className="col-md-6">
             <Label for="inputPassword4">Last Name</Label>
             <Input
-              type="password"
-              id="inputPassword4"
+              type="text"
               placeholder="Last Name"
               autoComplete="off"
+              value={LastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </FormGroup>
           <FormGroup className="col-md-4">
             <Label for="inputEmail4">Freelance Role</Label>
-            <Input type="email" id="inputEmail4" placeholder="Talent" />
+            <Input
+              type="text"
+              id="inputEmail4"
+              placeholder="Talent"
+              value={Role}
+              onChange={(e) => setRole(e.target.value)}
+            />
           </FormGroup>
         </div>
         <FormGroup>
           <Label for="inputAddress">Address</Label>
-          <Input type="text" id="inputAddress" placeholder="Address" />
+          <Input
+            type="text"
+            id="inputAddress"
+            placeholder="Address"
+            value={Address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
         </FormGroup>
         <div className="form-row">
           <FormGroup className="col-md-6">
             <Label for="inputCity">City</Label>
-            <Input type="text" id="inputCity" />
+            <Input
+              type="text"
+              id="inputCity"
+              value={City}
+              onChange={(e) => setCity(e.target.value)}
+            />
           </FormGroup>
           <FormGroup className="col-md-4">
-            <Label for="inputState">State</Label>
-            <Input type="select" name="select" id="inputState">
-              <option>Choose...</option>
-              <option>...</option>
+            <Label for="inputState">Area</Label>
+            <Input
+              type="select"
+              name="select"
+              value={Area}
+              onChange={(e) => setState(e.target.value)}
+            >
+              <option>North</option>
+              <option>South</option>
+              <option>East</option>
+              <option>West</option>
+              <option>Central</option>
             </Input>
           </FormGroup>
           <FormGroup className="col-md-2">
             <Label for="inputZip">Postal Code</Label>
-            <Input type="text" id="inputZip" />
+            <Input
+              type="text"
+              id="inputZip"
+              value={PostalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
           </FormGroup>
         </div>
         <FormGroup>
@@ -55,9 +107,27 @@ const Forms = () => {
             id="exampleText"
             maxLength="200"
             placeholder="Tell the world about you"
+            value={Description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </FormGroup>
-        <Button type="submit" color="default" outline>
+        <Button
+          type="submit"
+          color="default"
+          outline
+          onClick={() =>
+            addInfo({
+              FirstName,
+              LastName,
+              Role,
+              Address,
+              City,
+              Area,
+              PostalCode,
+              Description,
+            })
+          }
+        >
           Update Info
         </Button>
         &nbsp; &nbsp;

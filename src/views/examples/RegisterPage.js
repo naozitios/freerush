@@ -20,9 +20,7 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 
 */
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import firebase from "../../firebase.js";
-const db = firebase.database();
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
@@ -30,6 +28,13 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import { Link } from "react-router-dom";
+
+const db = firebase.firestore().collection("users");
+
+//adds details to database
+function addUser(newUser) {
+  db.doc(newUser.id).set(newUser)
+}
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -40,9 +45,10 @@ function RegisterPage() {
     };
   });
 
-  const [player1, setPlayer1] = useState("Player 1");
-  const [player2, setPlayer2] = useState("Player 2");
-  const router = useRouter();
+  const [Username, setUsername] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [CPassword, setCPassword] = useState("");
 
   return (
     <>
@@ -69,30 +75,44 @@ function RegisterPage() {
                 <h3 className="title mx-auto">Register with us</h3>
                 <Form
                   className="register-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    const profileRef = db.ref("profile");
-                    const newProfileRef = profileRef.push();
-                    newProfileRef.set({
-                      //information
-                    });
-                    router.push(`/Setup-page/${newProfileRef.key}`);
-                  }}
                 >
                   <label>Username</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input
+                    placeholder="Username"
+                    type="text"
+                    value={Username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                   <label>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input
+                    placeholder="Email"
+                    type="text"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <label>Password</label>
-                  <Input placeholder="Password" type="password" />
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={Password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                   <label>Confirmed Password</label>
-                  <Input placeholder="Client, or Artist, or both?" type="C/A" />
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={CPassword}
+                    onChange={(e) => setCPassword(e.target.value)}
+                  />
                   <Link to="/Setup-page">
                     <Button
                       block
                       className="btn-round"
                       color="danger"
                       type="submit"
+                      onClick={() => addUser({Username, Email, Password})}
                     >
                       Register
                     </Button>

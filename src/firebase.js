@@ -5,6 +5,7 @@ import "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyACfpxaaqSbdFRmOmmmlGh1byFQ-RnzXZc",
   authDomain: "freerush-df784.firebaseapp.com",
+  databaseURL: "https://freerush-df784-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "freerush-df784",
   storageBucket: "freerush-df784.appspot.com",
   messagingSenderId: "256261812714",

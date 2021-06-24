@@ -52,7 +52,7 @@ function ProductPage() {
         <Container>
           <Row>
             <Col className="mr-auto" md="10">
-              <h1 className="mb-1 text-muted">Service Information</h1>
+              <h1 className="mb-1 text-muted">Personal Information</h1>
               <br></br>
             </Col> 
             <Container>
