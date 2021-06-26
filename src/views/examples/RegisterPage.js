@@ -33,7 +33,8 @@ const db = firebase.firestore().collection("users");
 
 //adds details to database
 function addUser(newUser) {
-  db.doc(newUser.id).set(newUser)
+  db.doc(newUser.id).set(newUser);
+  firebase.auth().createUserWithEmailAndPassword("tes", "test")
 }
 
 function RegisterPage() {
@@ -73,9 +74,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
-                <Form
-                  className="register-form"
-                >
+                <Form className="register-form">
                   <label>Username</label>
                   <Input
                     placeholder="Username"
@@ -112,7 +111,13 @@ function RegisterPage() {
                       className="btn-round"
                       color="danger"
                       type="submit"
-                      onClick={() => addUser({Username, Email, Password})}
+                      onClick={() =>
+                        addUser({
+                          Username,
+                          Email,
+                          Password,
+                        })
+                      }
                     >
                       Register
                     </Button>
