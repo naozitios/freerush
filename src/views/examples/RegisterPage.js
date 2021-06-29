@@ -33,8 +33,24 @@ const db = firebase.firestore().collection("users");
 
 //adds details to database
 function addUser(newUser) {
-  db.doc(newUser.id).set(newUser);
-  firebase.auth().createUserWithEmailAndPassword("tes", "test")
+  console.log("newUser added")
+  if (newUser.CPassword !== newUser.Password) {
+    return alert("Password and Confirmed Password do not match.");
+    
+  } else {
+    //db.doc().set(newUser);
+    // firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
+    newUser.CPassword = newUser.CPassword;
+    db.doc(newUser.id).set({
+      name: newUser.Username,
+      email: newUser.Email,
+      password: newUser.Password
+  })
+  .then(() => {
+      console.log("Document successfully written!");
+  })
+  window.location = "./Setup-page";
+  }
 }
 
 function RegisterPage() {
@@ -50,6 +66,8 @@ function RegisterPage() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [CPassword, setCPassword] = useState("");
+
+  
 
   return (
     <>
@@ -99,13 +117,13 @@ function RegisterPage() {
                   />
                   <label>Confirmed Password</label>
                   <Input
-                    placeholder="Password"
+                    placeholder="Confirmed Password"
                     type="password"
                     name="Password"
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
-                  <Link to="/Setup-page">
+            
                     <Button
                       block
                       className="btn-round"
@@ -116,17 +134,19 @@ function RegisterPage() {
                           Username,
                           Email,
                           Password,
+                          CPassword
                         })
                       }
                     >
                       Register
                     </Button>
-                  </Link>
+            
                 </Form>
               </Card>
             </Col>
           </Row>
         </Container>
+
         <div className="footer register-footer text-center">
           <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>
