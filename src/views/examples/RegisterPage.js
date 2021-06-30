@@ -24,32 +24,27 @@ import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import { v4 as uuidv4 } from "uuid";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
-import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 const db = firebase.firestore().collection("users");
 
 //adds details to database
 function addUser(newUser) {
-  console.log("newUser added")
   if (newUser.CPassword !== newUser.Password) {
     return alert("Password and Confirmed Password do not match.");
-    
   } else {
-    //db.doc().set(newUser);
-    // firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
-    newUser.CPassword = newUser.CPassword;
     db.doc(newUser.id).set({
-      name: newUser.Username,
+      username: newUser.Username,
       email: newUser.Email,
-      password: newUser.Password
-  })
-  .then(() => {
-      console.log("Document successfully written!");
-  })
-  window.location = "./Setup-page";
+      password: newUser.Password,
+      id: newUser.id,
+    });
+    // firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
+    //newUser.CPassword = newUser.CPassword;
+    //window.location = "./Setup-page";
   }
 }
 
@@ -66,8 +61,6 @@ function RegisterPage() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [CPassword, setCPassword] = useState("");
-
-  
 
   return (
     <>
@@ -123,24 +116,23 @@ function RegisterPage() {
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
-            
-                    <Button
-                      block
-                      className="btn-round"
-                      color="danger"
-                      type="submit"
-                      onClick={() =>
-                        addUser({
-                          Username,
-                          Email,
-                          Password,
-                          CPassword
-                        })
-                      }
-                    >
-                      Register
-                    </Button>
-            
+                  <Button
+                    block
+                    className="btn-round"
+                    color="danger"
+                    type="submit"
+                    onClick={() =>
+                      addUser({
+                        Username,
+                        Email,
+                        Password,
+                        CPassword,
+                        id: uuidv4(),
+                      })
+                    }
+                  >
+                    Register
+                  </Button>
                 </Form>
               </Card>
             </Col>
