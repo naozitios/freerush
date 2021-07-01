@@ -24,16 +24,28 @@ import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import { v4 as uuidv4 } from "uuid";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
-import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 const db = firebase.firestore().collection("users");
 
 //adds details to database
 function addUser(newUser) {
-  db.doc(newUser.id).set(newUser)
+  if (newUser.CPassword !== newUser.Password) {
+    return alert("Password and Confirmed Password do not match.");
+  } else {
+    db.doc(newUser.id).set({
+      username: newUser.Username,
+      email: newUser.Email,
+      password: newUser.Password,
+      id: newUser.id,
+    });
+    // firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
+    //newUser.CPassword = newUser.CPassword;
+    //window.location = "./Setup-page";
+  }
 }
 
 function RegisterPage() {
@@ -73,9 +85,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
-                <Form
-                  className="register-form"
-                >
+                <Form className="register-form">
                   <label>Username</label>
                   <Input
                     placeholder="Username"
@@ -100,28 +110,35 @@ function RegisterPage() {
                   />
                   <label>Confirmed Password</label>
                   <Input
-                    placeholder="Password"
+                    placeholder="Confirmed Password"
                     type="password"
                     name="Password"
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
-                  <Link to="/Setup-page">
-                    <Button
-                      block
-                      className="btn-round"
-                      color="danger"
-                      type="submit"
-                      onClick={() => addUser({Username, Email, Password})}
-                    >
-                      Register
-                    </Button>
-                  </Link>
+                  <Button
+                    block
+                    className="btn-round"
+                    color="danger"
+                    type="submit"
+                    onClick={() =>
+                      addUser({
+                        Username,
+                        Email,
+                        Password,
+                        CPassword,
+                        id: uuidv4(),
+                      })
+                    }
+                  >
+                    Register
+                  </Button>
                 </Form>
               </Card>
             </Col>
           </Row>
         </Container>
+
         <div className="footer register-footer text-center">
           <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>

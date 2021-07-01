@@ -10,6 +10,7 @@ const db = firebase.firestore().collection("users");
 function addInfo(newInfo) {
   db.doc(newInfo.id).set(newInfo);
 }
+
 const Forms = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -111,25 +112,29 @@ const Forms = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </FormGroup>
+        <Link to="service-page">
         <Button
           type="submit"
           color="default"
           outline
-          onClick={() =>
-            addInfo({
-              FirstName,
-              LastName,
-              Role,
-              Address,
-              City,
-              Area,
-              PostalCode,
-              Description,
-            })
+          onClick={
+            //handleUpdate
+            () =>
+              addInfo({
+                FirstName,
+                LastName,
+                Role,
+                Address,
+                City,
+                Area,
+                PostalCode,
+                Description,
+              })
           }
         >
           Update Info
         </Button>
+        </Link>
         &nbsp; &nbsp;
         <Link to="service-page">
           <Button color="danger" outline="danger">

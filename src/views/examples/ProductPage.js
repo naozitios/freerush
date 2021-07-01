@@ -68,7 +68,7 @@ function ProductPage() {
         <Container>
           <Row>
             <Col className="mr-auto" md="10">
-              <h1 className="mb-1 text-muted">Cock Magic for guys</h1>
+              <h1 className="mb-1 text-muted">Magic for Corporate Events</h1>
               <br></br>
             </Col>
             <div>
@@ -130,7 +130,7 @@ function ProductPage() {
               <Row>
                 <h5>
                   {" "}
-                  The cock magic that all guys like, some like it harder than
+                  The magic that all guys like, some like it harder than
                   the rest, but at the end of the day once it goes in the
                   customer is satisfied.{" "}
                 </h5>
