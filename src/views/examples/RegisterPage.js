@@ -63,11 +63,6 @@ function RegisterPage() {
   const [Password, setPassword] = useState("");
   const [CPassword, setCPassword] = useState("");
 
-  db.add({
-    email: "newUser.Email",
-    password: "newUser.Password",
-  });
-
   return (
     <>
       <IndexNavbar />
