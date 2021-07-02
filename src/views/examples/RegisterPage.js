@@ -24,11 +24,11 @@ import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
-import { v4 as uuidv4 } from "uuid";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
-import { useHistory } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
+
 const db = firebase.firestore().collection("users");
 
 //adds details to database
@@ -36,13 +36,15 @@ function addUser(newUser) {
   if (newUser.CPassword !== newUser.Password) {
     return alert("Password and Confirmed Password do not match.");
   } else {
-    db.doc(newUser.id).set({
-      username: newUser.Username,
+    db.add({
       email: newUser.Email,
       password: newUser.Password,
-      id: newUser.id,
     });
-    // firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(newUser.Email, newUser.Password);
+    //firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
     //newUser.CPassword = newUser.CPassword;
     //window.location = "./Setup-page";
   }
@@ -57,10 +59,14 @@ function RegisterPage() {
     };
   });
 
-  const [Username, setUsername] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [CPassword, setCPassword] = useState("");
+
+  db.add({
+    email: "newUser.Email",
+    password: "newUser.Password",
+  });
 
   return (
     <>
@@ -86,13 +92,6 @@ function RegisterPage() {
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
                 <Form className="register-form">
-                  <label>Username</label>
-                  <Input
-                    placeholder="Username"
-                    type="text"
-                    value={Username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
                   <label>Email</label>
                   <Input
                     placeholder="Email"
@@ -112,7 +111,7 @@ function RegisterPage() {
                   <Input
                     placeholder="Confirmed Password"
                     type="password"
-                    name="Password"
+                    name="CPassword"
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
@@ -123,11 +122,9 @@ function RegisterPage() {
                     type="submit"
                     onClick={() =>
                       addUser({
-                        Username,
                         Email,
                         Password,
                         CPassword,
-                        id: uuidv4(),
                       })
                     }
                   >
