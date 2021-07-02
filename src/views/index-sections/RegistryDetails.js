@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const db = firebase.firestore().collection("users");
+const auth = firebase.auth()
 
 function addInfo(newInfo) {
   db.doc(newInfo.id).set(newInfo);
@@ -21,6 +22,12 @@ const Forms = () => {
   const [PostalCode, setPostalCode] = useState("");
   const [Description, setDescription] = useState("");
 
+  try {
+    auth.createUserWithEmailAndPassword("email=st", "password=test")
+  } catch (error) {
+    alert(error)
+  }
+  
   return (
     <>
       <form>
