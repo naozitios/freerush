@@ -47,6 +47,10 @@ function addUser(newUser) {
     //firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
     //newUser.CPassword = newUser.CPassword;
     //window.location = "./Setup-page";
+    const redirect = () => {
+      window.open("./Setup-page");
+    };
+    redirect();
   }
 }
 
@@ -110,6 +114,7 @@ function RegisterPage() {
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
+
                   <Button
                     block
                     className="btn-round"
