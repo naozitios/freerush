@@ -31,8 +31,8 @@ import { useHistory } from "react-router-dom";
 
 function RegisterPage() {
   const [Email, setEmail] = useState("");
-  const [Password, tryPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -46,20 +46,20 @@ function RegisterPage() {
 
   async function handleSubmit(newUser) {
     try {
-      setError("");
-      setLoading(true);
-      await firebase
-        .auth()
-        .signInWithEmailAndPassword(newUser.Email, newUser.Password);
-      history.push("./");
+      setMessage("")
+      setError("")
+      setLoading(true)
+      await firebase.auth.sendPasswordResetEmail(newUser.Email)
+      setMessage("Check your inbox for further instructions")
     } catch {
-      setError("Failed to log in");
+      setError("Failed to reset password")
     }
-    setLoading(false);
+
+    setLoading(false)
   }
 
   function goTo() {
-    history.push("./stupid-page");
+    history.push("./login-page")
   }
 
   return (
@@ -84,34 +84,9 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Welcome</h3>
+                <h3 className="title mx-auto">Password Reset</h3>
                 {error && <h4>{error}</h4>}
-                <div className="social-line text-center">
-                  <Button
-                    className="btn-neutral btn-just-icon mr-1"
-                    color="facebook"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-facebook-square" />
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-just-icon mr-1"
-                    color="google"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-google-plus" />
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-just-icon"
-                    color="twitter"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fa fa-twitter" />
-                  </Button>
-                </div>
+                {message && <h4>{message}</h4>}
                 <Form className="register-form">
                   <label>Email</label>
                   <Input
@@ -120,30 +95,20 @@ function RegisterPage() {
                     value={Email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label>Password</label>
-                  <Input
-                    placeholder="Password"
-                    type="password"
-                    name="Password"
-                    value={Password}
-                    onChange={(e) => tryPassword(e.target.value)}
-                  />
                   <Button
                     block
                     className="btn-round"
                     color="danger"
                     disabled={loading}
-                    onClick={() => handleSubmit({ Email, Password })}
+                    onClick={() => handleSubmit({ Email })}
                   >
-                    Login
+                    Reset password 
                   </Button>
                 </Form>
                 <div className="forgot">
-                
                   <Button className="btn-link" color="danger" href="#pablo" onClick={() => goTo()}>
-                    Forgot password?
+                    Login
                   </Button>
-                
                 </div>
               </Card>
             </Col>
