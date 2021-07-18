@@ -27,34 +27,18 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
-//import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const db = firebase.firestore().collection("users");
 
-//adds details to database
-function addUser(newUser) {
-  if (newUser.CPassword !== newUser.Password) {
-    return alert("Password and Confirmed Password do not match.");
-  } else {
-    db.add({
-      email: newUser.Email,
-      password: newUser.Password,
-    });
-
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(newUser.Email, newUser.Password);
-    //firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password)
-    //newUser.CPassword = newUser.CPassword;
-    //window.location = "./Setup-page";
-    const redirect = () => {
-      window.open("./Setup-page");
-    };
-    redirect();
-  }
-}
-
 function RegisterPage() {
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [CPassword, setCPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("register-page");
@@ -63,9 +47,27 @@ function RegisterPage() {
     };
   });
 
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [CPassword, setCPassword] = useState("");
+  //adds details to database
+  async function addUser(newUser) {
+    if (newUser.CPassword !== newUser.Password) {
+      return setError("incorrect password");
+    }
+    try {
+      setError("");
+      setLoading(true);
+      db.add({
+        email: newUser.Email,
+        password: newUser.Password,
+      });
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(newUser.Email, newUser.Password);
+      history.push("./Setup-page");
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
+  }
 
   return (
     <>
@@ -90,6 +92,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Register with us</h3>
+                {error && <h4>{error}</h4>}
                 <Form className="register-form">
                   <label>Email</label>
                   <Input
@@ -116,6 +119,7 @@ function RegisterPage() {
                   />
 
                   <Button
+                    disabled={loading}
                     block
                     className="btn-round"
                     color="danger"

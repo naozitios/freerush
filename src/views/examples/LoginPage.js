@@ -19,15 +19,23 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
+import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import { useHistory } from "react-router-dom";
 
 function RegisterPage() {
+  const [Email, setEmail] = useState("");
+  const [Password, tryPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("login-page");
@@ -35,6 +43,19 @@ function RegisterPage() {
       document.body.classList.remove("login-page");
     };
   });
+
+  async function handleSubmit() {
+    try {
+      setError("")
+      setLoading(true)
+      await firebase.auth().signInWithEmailAndPassword(Email, Password);
+      history.push("/")
+    } catch {
+      setError("Failed to log in")
+    }
+    setLoading(false)
+  }
+
   return (
     <>
       <IndexNavbar />
@@ -84,21 +105,31 @@ function RegisterPage() {
                     <i className="fa fa-twitter" />
                   </Button>
                 </div>
+                
                 <Form className="register-form">
+                {error && <h4>{error}</h4>}
                   <label>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input placeholder="Email"
+                    type="text"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)} />
                   <label>Password</label>
-                  <Input placeholder="Password" type="password" />
+                  <Input placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={Password}
+                    onChange={(e) => tryPassword(e.target.value)} />
                   <Button block className="btn-round" color="danger">
                     Login
                   </Button>
                 </Form>
                 <div className="forgot">
                   <Button
+                    disabled={loading}
                     className="btn-link"
                     color="danger"
                     href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => handleSubmit}
                   >
                     Forgot password?
                   </Button>
