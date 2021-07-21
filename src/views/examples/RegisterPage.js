@@ -29,8 +29,6 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import { useHistory } from "react-router-dom";
 
-const db = firebase.firestore().collection("users");
-
 function RegisterPage() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -55,10 +53,6 @@ function RegisterPage() {
     try {
       setError("");
       setLoading(true);
-      db.add({
-        email: newUser.Email,
-        password: newUser.Password,
-      });
       await firebase
         .auth()
         .createUserWithEmailAndPassword(newUser.Email, newUser.Password);

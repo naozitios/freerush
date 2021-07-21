@@ -20,30 +20,14 @@ https://demos.creative-tim.com/paper-kit-react/#/profile-page?ref=pkr-github-rea
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-
-// reactstrap components
-import {
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
-// core components
+import { React } from "react";
+import { Container, Row, Col } from "reactstrap";
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import RegistryDetails from "../index-sections/ProductDetails.js";
 
 function ProductPage() {
-  document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("landing-page");
-    return function cleanup() {
-      document.body.classList.remove("landing-page");
-    };
-  });
-  
   return (
     <>
       <ProductPageHeader />
@@ -54,14 +38,13 @@ function ProductPage() {
             <Col className="mr-auto" md="10">
               <h1 className="mb-1 text-muted">Service Information</h1>
               <br></br>
-            </Col> 
+            </Col>
             <Container>
               <Row>
                 <Col>
                   <RegistryDetails></RegistryDetails>
                 </Col>
               </Row>
-              
             </Container>
             &nbsp;
             <hr />
