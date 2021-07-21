@@ -21,6 +21,7 @@ https://demos.creative-tim.com/paper-kit-react/#/profile-page?ref=pkr-github-rea
 
 */
 import React from "react";
+import firebase from "../../firebase.js";
 
 // reactstrap components
 import {
@@ -42,8 +43,17 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import Cards from "../index-sections/ProductCard.js";
 import Carousels from "../index-sections/Carousel.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 
 // reactstrap components
+function Navbar() {
+  const user = firebase.auth().currentUser;
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
+}
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -63,7 +73,7 @@ function ProfilePage() {
   });
   return (
     <>
-      <IndexNavbar />
+      <Navbar />
       <ProfilePageHeader />
       <div className="section profile-content">
         <Container>

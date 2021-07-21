@@ -19,15 +19,32 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
+import firebase from "../../firebase.js";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import { useHistory } from "react-router-dom";
+import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 
+function Navbar() {
+  const user = firebase.auth().currentUser;
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
+}
 function RegisterPage() {
+  const [Email, setEmail] = useState("");
+  const [Password, tryPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("login-page");
@@ -35,9 +52,28 @@ function RegisterPage() {
       document.body.classList.remove("login-page");
     };
   });
+
+  async function handleSubmit(newUser) {
+    try {
+      setError("");
+      setLoading(true);
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(newUser.Email, newUser.Password);
+      history.push("./");
+    } catch {
+      setError("Failed to log in");
+    }
+    setLoading(false);
+  }
+
+  function goTo() {
+    history.push("./stupid-page");
+  }
+
   return (
     <>
-      <IndexNavbar />
+      <Navbar />
       <div
         className="page-header"
         style={{
@@ -58,6 +94,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Welcome</h3>
+                {error && <h4>{error}</h4>}
                 <div className="social-line text-center">
                   <Button
                     className="btn-neutral btn-just-icon mr-1"
@@ -86,31 +123,43 @@ function RegisterPage() {
                 </div>
                 <Form className="register-form">
                   <label>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input
+                    placeholder="Email"
+                    type="text"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <label>Password</label>
-                  <Input placeholder="Password" type="password" />
-                  <Button block className="btn-round" color="danger">
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    name="Password"
+                    value={Password}
+                    onChange={(e) => tryPassword(e.target.value)}
+                  />
+                  <Button
+                    block
+                    className="btn-round"
+                    color="danger"
+                    disabled={loading}
+                    onClick={() => handleSubmit({ Email, Password })}
+                  >
                     Login
                   </Button>
                 </Form>
                 <div className="forgot">
-                  <Button
-                    className="btn-link"
-                    color="danger"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
+                
+                  <Button className="btn-link" color="danger" href="#pablo" onClick={() => goTo()}>
                     Forgot password?
                   </Button>
+                
                 </div>
               </Card>
             </Col>
           </Row>
         </Container>
         <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, edward and noah 🚢
-          </h6>
+          <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>
       </div>
     </>

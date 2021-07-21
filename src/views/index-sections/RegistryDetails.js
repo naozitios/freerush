@@ -1,16 +1,11 @@
 import React from "react";
 import firebase from "../../firebase.js";
-
 import { FormGroup, Label, Input, Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const db = firebase.firestore().collection("users");
-const auth = firebase.auth()
-
-function addInfo(newInfo) {
-  db.doc(newInfo.id).set(newInfo);
-}
+const user = firebase.auth().currentUser;
 
 const Forms = () => {
   const [FirstName, setFirstName] = useState("");
@@ -21,13 +16,18 @@ const Forms = () => {
   const [Area, setState] = useState("");
   const [PostalCode, setPostalCode] = useState("");
   const [Description, setDescription] = useState("");
+  const history = useHistory();
 
-  try {
-    auth.createUserWithEmailAndPassword("email=st", "password=test")
-  } catch (error) {
-    alert(error)
+  function addInfo(newInfo) {
+    db.doc(user.uid).set(newInfo);
+    history.push("./profile-page");
   }
-  
+
+  function addInfoandAddservice(newInfo) {
+    db.doc(user.uid).set(newInfo);
+    history.push("./service-page");
+  }
+
   return (
     <>
       <form>
@@ -119,7 +119,6 @@ const Forms = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </FormGroup>
-        <Link to="service-page">
         <Button
           type="submit"
           color="default"
@@ -141,13 +140,27 @@ const Forms = () => {
         >
           Update Info
         </Button>
-        </Link>
         &nbsp; &nbsp;
-        <Link to="service-page">
-          <Button color="danger" outline="danger">
-            Add service
-          </Button>
-        </Link>
+        <Button
+          color="danger"
+          outline="danger"
+          onClick={
+            //handleUpdate
+            () =>
+              addInfoandAddservice({
+                FirstName,
+                LastName,
+                Role,
+                Address,
+                City,
+                Area,
+                PostalCode,
+                Description,
+              })
+          }
+        >
+          Add service
+        </Button>
       </form>
     </>
   );

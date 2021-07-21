@@ -16,7 +16,7 @@ https://demos.creative-tim.com/paper-kit-react/#/register-page?ref=pkr-github-re
 
 =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ok sures
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
 import React, { useState } from "react";
@@ -27,61 +27,49 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
-import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 import { useHistory } from "react-router-dom";
-
-function Navbar() {
-  const user = firebase.auth().currentUser;
-    if (user) {
-      return <LoggedInIndexNavbar />
-    } else {
-      return <IndexNavbar />
-    }
-}
 
 function RegisterPage() {
   const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [CPassword, setCPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
-    document.body.classList.add("register-page");
+    document.body.classList.add("login-page");
     return function cleanup() {
-      document.body.classList.remove("register-page");
+      document.body.classList.remove("login-page");
     };
   });
 
-  //adds details to database
-  async function addUser(newUser) {
-    if (newUser.CPassword !== newUser.Password) {
-      return setError("incorrect password");
-    }
+  async function handleSubmit(newUser) {
     try {
-      setError("");
-      setLoading(true);
-      await firebase
-        .auth()
-        .createUserWithEmailAndPassword(newUser.Email, newUser.Password);
-      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-      history.push("./Setup-page");
+      setMessage("")
+      setError("")
+      setLoading(true)
+      await firebase.auth.sendPasswordResetEmail(newUser.Email)
+      setMessage("Check your inbox for further instructions")
     } catch {
-      setError("Failed to create an account");
+      setError("Failed to reset password")
     }
-    setLoading(false);
+
+    setLoading(false)
+  }
+
+  function goTo() {
+    history.push("./login-page")
   }
 
   return (
     <>
-      <Navbar />
+      <IndexNavbar />
       <div
         className="page-header"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/registerpage.jpg").default + ")",
+            "url(" + require("assets/img/noah_login.JPG").default + ")",
         }}
       >
         <div
@@ -96,8 +84,9 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Register with us</h3>
+                <h3 className="title mx-auto">Password Reset</h3>
                 {error && <h4>{error}</h4>}
+                {message && <h4>{message}</h4>}
                 <Form className="register-form">
                   <label>Email</label>
                   <Input
@@ -106,45 +95,25 @@ function RegisterPage() {
                     value={Email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label>Password</label>
-                  <Input
-                    placeholder="Password"
-                    type="password"
-                    name="Password"
-                    value={Password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <label>Confirmed Password</label>
-                  <Input
-                    placeholder="Confirmed Password"
-                    type="password"
-                    name="CPassword"
-                    value={CPassword}
-                    onChange={(e) => setCPassword(e.target.value)}
-                  />
-
                   <Button
-                    disabled={loading}
                     block
                     className="btn-round"
                     color="danger"
-                    type="submit"
-                    onClick={() =>
-                      addUser({
-                        Email,
-                        Password,
-                        CPassword,
-                      })
-                    }
+                    disabled={loading}
+                    onClick={() => handleSubmit({ Email })}
                   >
-                    Register
+                    Reset password 
                   </Button>
                 </Form>
+                <div className="forgot">
+                  <Button className="btn-link" color="danger" href="#pablo" onClick={() => goTo()}>
+                    Login
+                  </Button>
+                </div>
               </Card>
             </Col>
           </Row>
         </Container>
-
         <div className="footer register-footer text-center">
           <h6>© {new Date().getFullYear()}, edward and noah 🚢</h6>
         </div>
