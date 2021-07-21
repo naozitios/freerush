@@ -25,13 +25,25 @@ import { Container, Row, Col } from "reactstrap";
 import ProductPageHeader from "components/Headers/ProductPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 import RegistryDetails from "../index-sections/ProductDetails.js";
+import firebase from "../../firebase.js";
+
+
+function Navbar() {
+  const user = firebase.auth().currentUser;
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
+}
 
 function ProductPage() {
   return (
     <>
       <ProductPageHeader />
-      <IndexNavbar />
+      <Navbar />
       <div>
         <Container>
           <Row>

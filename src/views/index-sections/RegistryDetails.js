@@ -1,6 +1,5 @@
 import React from "react";
 import firebase from "../../firebase.js";
-
 import { FormGroup, Label, Input, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";

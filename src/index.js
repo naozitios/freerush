@@ -19,7 +19,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
 // styles
 import "bootstrap/scss/bootstrap.scss";
 import "assets/scss/paper-kit.scss?v=1.3.0";
@@ -38,7 +37,6 @@ import LoginPage from "views/examples/LoginPage.js";
 import ArtistsPage from "views/examples/ArtistsPage.js";
 import NucleoPage from "views/NucleoIcons.js";
 import AddService from "views/examples/AddService.js";
-
 // others
 
 ReactDOM.render(

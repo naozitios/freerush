@@ -21,7 +21,7 @@ const Forms = () => {
   const history = useHistory();
 
   function addInfo(newInfo) {
-    db.doc(user.uid).doc("services").add(newInfo);
+    db.doc(user.uid).collection("services").doc(newInfo);
     history.push("./profile-page");
   }
 
@@ -32,7 +32,7 @@ const Forms = () => {
           <FormGroup className="col-md-6">
             <Label for="inputEmail4">Service Name</Label>
             <Input
-              type="email"
+              type="test"
               id="inputEmail4"
               placeholder="Name"
               value={ServiceName}

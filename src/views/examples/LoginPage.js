@@ -28,7 +28,16 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import { useHistory } from "react-router-dom";
+import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 
+function Navbar() {
+  const user = firebase.auth().currentUser;
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
+}
 function RegisterPage() {
   const [Email, setEmail] = useState("");
   const [Password, tryPassword] = useState("");
@@ -64,7 +73,7 @@ function RegisterPage() {
 
   return (
     <>
-      <IndexNavbar />
+      <Navbar />
       <div
         className="page-header"
         style={{

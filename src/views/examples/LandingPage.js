@@ -20,8 +20,10 @@ https://demos.creative-tim.com/paper-kit-react/#/landing-page?ref=pkr-github-rea
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
 import React from "react";
 import { Link } from "react-router-dom";
+import firebase from "../../firebase.js";
 
 // reactstrap components
 import {
@@ -43,7 +45,17 @@ import {
 // core components
 import DemoFooter from "components/Footers/DemoFooter.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 import IndexHeader from "components/Headers/IndexHeader";
+
+function Navbar() {
+  const user = firebase.auth().currentUser;
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
+}
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -53,10 +65,11 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
   });
+
   return (
     <>
       <IndexHeader />
-      <IndexNavbar />
+      <Navbar />
       <div className="main">
         <div className="section text-center">
           <Container>
@@ -129,7 +142,6 @@ function LandingPage() {
                     <p>
                       Take a look at our artists' profiles and reviews to see who you would work well with
                     </p>
-                  
                     <Link to="/profile-page" >
                       <Button className="btn-link" color="info">
                         See more
@@ -147,8 +159,9 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Sample Product Page</h4>
                     <p>
-                      Find you a great girlfriend or boyfriend who isn't crazy.
-                      It will help you in the long run. Trust us!
+                      Show us the world of adventure that we wish to pursue. 
+                      The world is at your fingertips. Imagine life beyond 
+                      the unknown.
                     </p>
                     <Link to="/product-page" >
                     <Button className="btn-link" color="info" href="#pablo">
