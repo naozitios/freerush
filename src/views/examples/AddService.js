@@ -29,7 +29,6 @@ import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 import RegistryDetails from "../index-sections/ProductDetails.js";
 import firebase from "../../firebase.js";
 
-
 function Navbar() {
   const user = firebase.auth().currentUser;
     if (user) {

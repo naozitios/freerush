@@ -21,7 +21,7 @@ const Forms = () => {
   const history = useHistory();
 
   function addInfo(newInfo) {
-    db.doc(user.uid).collection("services").doc(newInfo);
+    db.doc(user.uid).doc("Services").add(newInfo);
     history.push("./profile-page");
   }
 
@@ -166,7 +166,11 @@ const Forms = () => {
           </Row>
         </div>
         <hr />
-        <Button type="submit" color="danger" outline           onClick={
+        <Button
+          type="submit"
+          color="danger"
+          outline
+          onClick={
             //handleUpdate
             () =>
               addInfo({
@@ -180,9 +184,10 @@ const Forms = () => {
                 Header3,
                 Details1,
                 Details2,
-                Details3
+                Details3,
               })
-          }>
+          }
+        >
           Add Service
         </Button>
       </form>

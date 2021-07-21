@@ -7,6 +7,7 @@ import { useState } from "react";
 const db = firebase.firestore().collection("users");
 const user = firebase.auth().currentUser;
 
+
 const Forms = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
