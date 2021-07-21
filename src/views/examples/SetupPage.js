@@ -47,7 +47,6 @@ function Navbar() {
 }
 
 function ProductPage() {
-
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -72,7 +71,6 @@ function ProductPage() {
                   <RegistryDetails></RegistryDetails>
                 </Col>
               </Row>
-              
             </Container>
             &nbsp;
             <hr />
