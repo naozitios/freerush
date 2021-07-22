@@ -23,7 +23,7 @@ import React, { useState } from "react";
 import firebase from "../../firebase.js";
 
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import { Button, Card, Form, Input, Container, Row, Col, Alert } from "reactstrap";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar";
@@ -94,7 +94,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Welcome</h3>
-                {error && <h4>{error}</h4>}
+                {error && <Alert block color = "info"><h6>{error}</h6></Alert>}
                 <div className="social-line text-center">
                   <Button
                     className="btn-neutral btn-just-icon mr-1"
@@ -146,7 +146,9 @@ function RegisterPage() {
                   >
                     Login
                   </Button>
+                  
                 </Form>
+                
                 <div className="forgot">
                 
                   <Button className="btn-link" color="danger" href="#pablo" onClick={() => goTo()}>

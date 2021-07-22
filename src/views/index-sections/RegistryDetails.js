@@ -1,6 +1,6 @@
 import React from "react";
 import firebase from "../../firebase.js";
-import { FormGroup, Label, Input, Button } from "reactstrap";
+import { FormGroup, Label, Input, Button, Alert } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
@@ -18,15 +18,28 @@ const Forms = () => {
   const [PostalCode, setPostalCode] = useState("");
   const [Description, setDescription] = useState("");
   const history = useHistory();
+  const [error, setError] = useState("");
 
   function addInfo(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        //if it doesnt work consider try catch
+        if (FirstName === "") {
+          return setError("First Name not filled");
+        }
+        if (LastName === "") {
+          return setError("Last Name not filled");
+        }
+        if (Role === "" || Address === ""|| City === ""|| Description === "") {
+          return setError("Mandatory entries not filled");
+        }
         var uid = user.uid;
         db.doc(uid).set(newInfo);
         history.push("./profile-page");
+      } else {
+        return setError("Please Re-Login to try again");
       }
     });
   }
@@ -37,6 +50,15 @@ const Forms = () => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        if (FirstName === "") {
+          return setError("First Name not filled");
+        }
+        if (LastName === "") {
+          return setError("Last Name not filled");
+        }
+        if (Role === "" || Address === ""|| City === ""|| Description === "") {
+          return setError("Mandatory entries not filled");
+        }
         var uid = user.uid;
         db.doc(uid).set(newInfo);
         history.push("./service-page");
@@ -136,6 +158,7 @@ const Forms = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </FormGroup>
+        {error && <Alert color="danger">{error}</Alert>}
         <Button
           type="submit"
           color="default"
