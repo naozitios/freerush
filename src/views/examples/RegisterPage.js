@@ -32,11 +32,11 @@ import { useHistory } from "react-router-dom";
 
 function Navbar() {
   const user = firebase.auth().currentUser;
-  if (user) {
-    return <LoggedInIndexNavbar />;
-  } else {
-    return <IndexNavbar />;
-  }
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
 }
 
 function RegisterPage() {
@@ -64,13 +64,7 @@ function RegisterPage() {
       setError("");
       setLoading(true);
       await firebase
-        .auth()
-        .setPersistence("local")
-        .then(() =>
-          firebase
-            .auth()
-            .createUserWithEmailAndPassword(newUser.Email, newUser.Password)
-        );
+        .auth().setPersistence('local').then(() => firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password))
 
       history.push("./Setup-page");
     } catch {
@@ -101,8 +95,8 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
+              {error && <h3>{error}</h3>}
                 <h3 className="title mx-auto">Register with us</h3>
-                {error && <h4>{error}</h4>}
                 <Form className="register-form">
                   <label>Email</label>
                   <Input
@@ -127,7 +121,6 @@ function RegisterPage() {
                     value={CPassword}
                     onChange={(e) => setCPassword(e.target.value)}
                   />
-
                   <Button
                     disabled={loading}
                     block

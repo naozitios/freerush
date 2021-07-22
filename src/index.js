@@ -28,6 +28,7 @@ import LandingPage from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import Index from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import ProfilePageLoggedIn from "views/examples/ProfilePageLoggedIn.js";
 import ForgotPWPage from "views/examples/ForgotPWPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import SetupPage from "views/examples/SetupPage";
@@ -46,6 +47,10 @@ ReactDOM.render(
       <Route
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
+      />
+      <Route
+        path="/loggedin-profile-page"
+        render={(props) => <ProfilePageLoggedIn {...props} />}
       />
       <Route
         path="/landing-page"

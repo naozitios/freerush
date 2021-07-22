@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import firebase from "../../firebase.js";
 import { useHistory } from "react-router-dom";
-import { FormGroup, Label, Input, Button, Row } from "reactstrap";
+import { FormGroup, Label, Input, Button, Row, Alert } from "reactstrap";
 
-const db = firebase.firestore().collection("users");
+const db = firebase.firestore();
 const user = firebase.auth().currentUser;
 
 const Forms = () => {
@@ -19,10 +19,25 @@ const Forms = () => {
   const [Details2, setDetails2] = useState("");
   const [Details3, setDetails3] = useState("");
   const history = useHistory();
+  const [error, setError] = useState("");
 
   function addInfo(newInfo) {
-    db.doc(user.uid).doc("Services").add(newInfo);
-    history.push("./profile-page");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        if (ServiceName === "" || ShortHeader === "" || Descriptions === "" || Hours === "" || CostPerHr === "") {
+          return setError("Incomplete information");
+        }
+        var uid = user.uid;
+        db.collection("users").doc(uid).collection("services").doc(newInfo.id).set(newInfo);
+        db.collection("services").doc(uid).collection("list").doc(newInfo.id).set(newInfo);
+        history.push("./loggedin-profile-page");
+      } else {
+        return setError("Please Re Login and try again")
+      }
+    });
+    
   }
 
   return (
@@ -166,6 +181,7 @@ const Forms = () => {
           </Row>
         </div>
         <hr />
+        {error && <Alert color="danger">{error}</Alert>}
         <Button
           type="submit"
           color="danger"
