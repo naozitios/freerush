@@ -148,7 +148,7 @@ function IndexNavbar() {
                 target="_blank"
               >
                 <li>
-                <Link to="/profile-page">
+                <Link to="/loggedin-profile-page">
                 <i className="nc-icon nc-spaceship"></i> Profile
                 </Link>
                 </li>

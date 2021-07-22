@@ -3,7 +3,7 @@ import firebase from "../../firebase.js";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Label, Input, Button, Row } from "reactstrap";
 
-const db = firebase.firestore().collection("users");
+const db = firebase.firestore();
 const user = firebase.auth().currentUser;
 
 const Forms = () => {
@@ -21,8 +21,19 @@ const Forms = () => {
   const history = useHistory();
 
   function addInfo(newInfo) {
-    db.doc(user.uid).doc("Services").add(newInfo);
-    history.push("./profile-page");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        db.collection("users").doc(uid).collection("services").doc(newInfo.id).set(newInfo);
+        db.collection("services").doc(uid).collection("list").doc(newInfo.id).set(newInfo);
+        history.push("./loggedin-profile-page");
+      } else {
+        alert("bruh wtf?")
+      }
+    });
+    
   }
 
   return (

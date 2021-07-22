@@ -32,11 +32,11 @@ import { useHistory } from "react-router-dom";
 
 function Navbar() {
   const user = firebase.auth().currentUser;
-  if (user) {
-    return <LoggedInIndexNavbar />;
-  } else {
-    return <IndexNavbar />;
-  }
+    if (user) {
+      return <LoggedInIndexNavbar />
+    } else {
+      return <IndexNavbar />
+    }
 }
 
 function RegisterPage() {
@@ -64,13 +64,7 @@ function RegisterPage() {
       setError("");
       setLoading(true);
       await firebase
-        .auth()
-        .setPersistence("local")
-        .then(() =>
-          firebase
-            .auth()
-            .createUserWithEmailAndPassword(newUser.Email, newUser.Password)
-        );
+        .auth().setPersistence('local').then(() => firebase.auth().createUserWithEmailAndPassword(newUser.Email, newUser.Password))
 
       history.push("./Setup-page");
     } catch {

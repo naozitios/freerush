@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const db = firebase.firestore().collection("users");
-const user = firebase.auth().currentUser;
+const user= firebase.auth().currentUser;
 
 
 const Forms = () => {
@@ -20,14 +20,30 @@ const Forms = () => {
   const history = useHistory();
 
   function addInfo(newInfo) {
-    db.doc(user.uid).set(newInfo);
-    history.push("./profile-page");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        db.doc(uid).set(newInfo);
+        history.push("./profile-page");
+      }
+    });
   }
+  
 
   function addInfoandAddservice(newInfo) {
-    db.doc(user.uid).set(newInfo);
-    history.push("./service-page");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        db.doc(uid).set(newInfo);
+        history.push("./service-page");
+      } 
+    });
   }
+  
 
   return (
     <>
