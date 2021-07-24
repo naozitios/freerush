@@ -19,10 +19,12 @@ const Forms = () => {
   const [Description, setDescription] = useState("");
   const history = useHistory();
   const [error, setError] = useState("");
+  var email;
 
   function addInfo(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        email = user.email
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         //if it doesnt work consider try catch
@@ -39,6 +41,7 @@ const Forms = () => {
         db.doc(uid).set(newInfo);
         history.push("./profile-page");
       } else {
+        email = ""
         return setError("Please Re-Login to try again");
       }
     });
@@ -175,6 +178,7 @@ const Forms = () => {
                 Area,
                 PostalCode,
                 Description,
+                email
               })
           }
         >

@@ -46,6 +46,8 @@ import Carousels from "../index-sections/Carousel.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import LoggedInIndexNavbar from "components/Navbars/LoggedInIndexNavbar";
 
+const user= firebase.auth().currentUser;
+
 // reactstrap components
 function Navbar() {
   const user = firebase.auth().currentUser;
@@ -57,13 +59,21 @@ function Navbar() {
 }
 
 function ProfilePage() {
+  const db = firebase.firestore().collection("users");
   const [activeTab, setActiveTab] = React.useState("1");
-
   const toggle = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
     }
   };
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userRef = db.doc(user.uid).get();
+    } else {
+      return 
+    }
+  });
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -89,6 +99,7 @@ function ProfilePage() {
             <div className="name">
               <h4 className="title">
                 Edward Loke <br />
+                
               </h4>
               <h6 className="description">Magician</h6>
             </div>
