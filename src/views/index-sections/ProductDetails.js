@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import firebase from "../../firebase.js";
+import storage from "../../firebase.js";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Label, Input, Button, Row, Alert } from "reactstrap";
 
@@ -20,6 +21,7 @@ const Forms = () => {
   const [Details3, setDetails3] = useState("");
   const history = useHistory();
   const [error, setError] = useState("");
+  const [image, setImage1] = useState(null);
 
   function addInfo(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
@@ -31,7 +33,7 @@ const Forms = () => {
         }
         var uid = user.uid;
         db.collection("users").doc(uid).collection("services").doc(newInfo.id).set(newInfo);
-        db.collection("services").doc(uid).collection("list").doc(newInfo.id).set(newInfo);
+        db.collection("services").doc(newInfo.id).set(newInfo);
         history.push("./loggedin-profile-page");
       } else {
         return setError("Please Re Login and try again")
@@ -104,7 +106,7 @@ const Forms = () => {
           <Row>
             <FormGroup className="col-md-2">
               <Label for="image1">Image 1</Label>
-              <Input type="image" id="inputAddress" />
+              <Input type="file" id="inputAddress" onChange={(e) => setImage1(e.target.value)}/>
             </FormGroup>
             <FormGroup className="col-md-4">
               <Label for="inputZip">Header 1</Label>
