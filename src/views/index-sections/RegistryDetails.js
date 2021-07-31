@@ -19,7 +19,7 @@ const Forms = () => {
   const [Description, setDescription] = useState("");
   const history = useHistory();
   const [error, setError] = useState("");
-
+  
   function addInfo(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -35,21 +35,21 @@ const Forms = () => {
         if (Role === "" || Address === ""|| City === ""|| Description === "") {
           return setError("Mandatory entries not filled");
         }
-        var uid = user.uid;
-        db.doc(uid).set(newInfo);
-        history.push("./profile-page");
+        //var uid = user.uid;
+        //db.doc(uid).set(newInfo);
+        history.push("./loggedin-profile-page");
       } else {
         return setError("Please Re-Login to try again");
       }
     });
   }
-  
 
-  function addInfoandAddservice(newInfo) {
+  function addInfoandService(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        //if it doesnt work consider try catch
         if (FirstName === "") {
           return setError("First Name not filled");
         }
@@ -59,13 +59,14 @@ const Forms = () => {
         if (Role === "" || Address === ""|| City === ""|| Description === "") {
           return setError("Mandatory entries not filled");
         }
-        var uid = user.uid;
-        db.doc(uid).set(newInfo);
+        //var uid = user.uid;
+        //db.doc(uid).set(newInfo);
         history.push("./service-page");
-      } 
+      } else {
+        return setError("Please Re-Login to try again");
+      }
     });
   }
-  
 
   return (
     <>
@@ -187,7 +188,7 @@ const Forms = () => {
           onClick={
             //handleUpdate
             () =>
-              addInfoandAddservice({
+              addInfoandService({
                 FirstName,
                 LastName,
                 Role,
