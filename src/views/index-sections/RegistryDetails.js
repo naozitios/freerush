@@ -35,8 +35,8 @@ const Forms = () => {
         if (Role === "" || Address === ""|| City === ""|| Description === "") {
           return setError("Mandatory entries not filled");
         }
-        var uid = user.uid;
-        db.doc(uid).set(newInfo);
+        //var uid = user.uid;
+        //db.doc(uid).set(newInfo);
         history.push("./loggedin-profile-page");
       } else {
         return setError("Please Re-Login to try again");
@@ -59,8 +59,8 @@ const Forms = () => {
         if (Role === "" || Address === ""|| City === ""|| Description === "") {
           return setError("Mandatory entries not filled");
         }
-        var uid = user.uid;
-        db.doc(uid).set(newInfo);
+        //var uid = user.uid;
+        //db.doc(uid).set(newInfo);
         history.push("./service-page");
       } else {
         return setError("Please Re-Login to try again");

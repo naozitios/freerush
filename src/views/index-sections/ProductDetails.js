@@ -22,6 +22,35 @@ const Forms = () => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [image, setImage1] = useState(null);
+  const [progress, setProgress] = useState(0);
+
+  const handleChange = e => {
+    if (e.target.files[0]) {
+      setImage1(e.target.files[0]);
+    }
+  };
+
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+      }
+    );
+  };
 
   function addInfo(newInfo) {
     firebase.auth().onAuthStateChanged((user) => {
@@ -31,15 +60,15 @@ const Forms = () => {
         if (ServiceName === "" || ShortHeader === "" || Descriptions === "" || Hours === "" || CostPerHr === "") {
           return setError("Incomplete information");
         }
-        var uid = user.uid;
-        db.collection("users").doc(uid).collection("services").doc(newInfo.id).set(newInfo);
-        db.collection("services").doc(newInfo.id).set(newInfo);
+        //var uid = user.uid;
+        //db.collection("users").doc(uid).collection("services").doc(newInfo.id).set(newInfo);
+        //db.collection("services").doc(newInfo.id).set(newInfo);
         history.push("./loggedin-profile-page");
       } else {
         return setError("Please Re Login and try again")
       }
     });
-    
+
   }
 
   return (
@@ -81,7 +110,7 @@ const Forms = () => {
             />
           </FormGroup>
           <FormGroup className="col-md-3">
-            <Label for="inputEmail4">Recommended lenght in hours</Label>
+            <Label for="inputEmail4">Recommended length in hours</Label>
             <Input
               type="number"
               id="inputEmail4"
@@ -106,7 +135,9 @@ const Forms = () => {
           <Row>
             <FormGroup className="col-md-2">
               <Label for="image1">Image 1</Label>
-              <Input type="file" id="inputAddress" onChange={(e) => setImage1(e.target.value)}/>
+              <progress value={progress} max="100" />
+              <Input type="file" onChange={handleChange}/>
+              <button onClick={handleUpload}>Upload</button>
             </FormGroup>
             <FormGroup className="col-md-4">
               <Label for="inputZip">Header 1</Label>
